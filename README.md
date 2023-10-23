@@ -26,8 +26,9 @@ Bölümler arası geçiş 2 türlüdür. Oyunun sonuna ulaşıp bir sonraki böl
 
 **Element Büyüleri:** Oyuncu, element büyülerini kullanabilir. Bu büyülerin farklı seviyeleri vardır (örnek olarak 3. 5. 10. seviyeler). Her seviyede yeni yetenekler kullanabilir. Oyuncu, elementlerinin seviyelerini yükseltmek için "Upgrade Kit" adı verilen özel nesneleri bulmalıdır. Yeni yetenekler oyuncuyu daha güçlü yapar.
   #### Elementler
-    -Buz
-    -Ateş
+    -Buz (Ice)
+    -Ateş (Fire)
+    -Zehir (Posion)
     -Hiçlik (Void)
 **Oyun Dünyası:** Oyun, sonlu bir koşu alanında geçer. Bu alan boyunca düşmanlar, toplanabilir materyaller, portallar ve hazine sandıkları rastgele yerleştirilir. Portallar benzer farklı bölümlere geçiş sağlar.
 
@@ -43,11 +44,16 @@ Bölümler arası geçiş 2 türlüdür. Oyunun sonuna ulaşıp bir sonraki böl
     -BOSS
     -Atış Kuklası
     -Agresif Canavar
+
+**Engeller:** Oyunda karakterin sona varmasını engellemek için olan objeler bulunmaktadır. Bunlardan bazıları sadece hareketi engellerken bazıları karaktere hasar vermektedir.
+ #### Engeller
+    -Kırılamayan Duvar
+    -Dikenli Yol
 ## 5. Hikaye ve Görevler
 Oyunda ana bir hikaye örgüsü bulunmaz. Oyuncunun amacı, sonlu koşu sırasında düşmanları yenmek, kaynakları toplamak ve elementlerini geliştirmektir.
 
 ## 6. Görsel ve Sanat Stil
-Görsel tasarım, oyunda kullanılan 3D karakterlerin orta seviyede (Mid-Poly) olacağını içerir. Ayrıca, 2D görseller çizgi film tarzında tasarlanacaktır.
+Görsel tasarım, oyunda kullanılan 3D karakterlerin orta seviyede (Mid-Poly) olacağını içerir. Ayrıca, 2D görseller çizgi film (Cartoon) tarzında tasarlanacaktır.
 
 ## 7. Ses ve Müzik
 Oyunda kullanılan ses efektleri ve müzikler, ücretsiz kaynaklardan veya ses programlarından temin edilecektir.
