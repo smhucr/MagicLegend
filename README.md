@@ -55,7 +55,7 @@ Oyunda kullanılan ses efektleri ve müzikler, ücretsiz kaynaklardan veya ses p
 ## 8. Teknik Gereksinimler
 Oyun, mobil platformlar için geliştirilecektir ve Unity oyun motoru kullanılacaktır.
 
-# Game Visuals
+# Game Visuals Examples
 ## Character Pack
 ![CharacterPack](https://github.com/smhucr/MagicLegend/blob/main/Visuals/DKO_CharPack.png)
 
