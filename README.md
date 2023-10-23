@@ -56,5 +56,11 @@ Oyunda kullanılan ses efektleri ve müzikler, ücretsiz kaynaklardan veya ses p
 Oyun, mobil platformlar için geliştirilecektir ve Unity oyun motoru kullanılacaktır.
 
 # Game Visuals
-
+## Character Pack
 ![CharacterPack](https://github.com/smhucr/MagicLegend/blob/main/Visuals/DKO_CharPack.png)
+
+## Game Art Style
+![SwingingSpire]([https://github.com/smhucr/MagicLegend/blob/main/Visuals/DKO_CharPack.png](https://github.com/smhucr/MagicLegend/blob/main/Visuals/Swingin%20Spire%20Example.png))
+
+![RobloxEx](https://github.com/smhucr/MagicLegend/blob/main/Visuals/M%C4%B0d%20poly%20Example.png)
+
