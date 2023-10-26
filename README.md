@@ -30,6 +30,12 @@ Bölümler arası geçiş 2 türlüdür. Oyunun sonuna ulaşıp bir sonraki böl
     -Ateş (Fire)
     -Zehir (Posion)
     -Hiçlik (Void)
+  #### Yetenekler
+    -Fırlatılabilir Element (Projectiles)
+    -Yuvarlak Alan içersine hasar veren yetenek (Magic Circle)
+    -Büyü Yağmuru (Normal yağmur || Meteor Yağmuru || Ok Yağmuru) (Magic Rain)
+    -İleri Doğru Dikdörtgen alan kaplayan büyük yetenek (Big Arrow || Big Meteor || Fire Breath || Gas)
+   
 **Oyun Dünyası:** Oyun, sonlu bir koşu alanında geçer. Bu alan boyunca düşmanlar, toplanabilir materyaller, portallar ve hazine sandıkları rastgele yerleştirilir. Portallar benzer farklı bölümlere geçiş sağlar.
 
 **Combo Streak:** Oyuncu, ardışık saldırılar yaparak daha fazla hasar verebilir (Combo Streak). Bu, oyuncunun oyun içi para kazanmasına yardımcı olabilir.
