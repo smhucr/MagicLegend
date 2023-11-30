@@ -71,6 +71,32 @@ Oyun, mobil platformlar için geliştirilecektir ve Unity oyun motoru kullanıla
 ## Character Pack
 ![CharacterPack](https://github.com/smhucr/MagicLegend/blob/main/Visuals/DKO_CharPack.png)
 
+## Düşmanlar
+### Boss 
+
+![BossT1](https://github.com/smhucr/MagicLegend/blob/main/Visuals/BossLordDarkar.webp)
+![BossT2](https://github.com/smhucr/MagicLegend/blob/main/Visuals/BossLordDarkar3DModel.jpg)
+![BossT3](https://github.com/smhucr/MagicLegend/blob/main/Visuals/BossMudMonster.jpg)
+
+### Atış Kuklası
+
+![DummyT1](https://github.com/smhucr/MagicLegend/blob/main/Visuals/DummyDeadcells.jfif)
+![DummyT2](https://github.com/smhucr/MagicLegend/blob/main/Visuals/DummyDeadcellsBuffed.jfif)
+
+### Agresif Canavar
+
+![AgressiveT1](https://github.com/smhucr/MagicLegend/blob/main/Visuals/AgressiveChibiSkeleton.jpg)
+![AgressiveT2](https://github.com/smhucr/MagicLegend/blob/main/Visuals/AgressiveHalfBodySkeleton.jpg)
+
+## Engeller
+### Kırılamayan Duvar
+
+![UnbreakableColumnn](https://github.com/smhucr/MagicLegend/blob/main/Visuals/UnbreakableWallTemple.jpg)
+
+### Dönen Dikenler
+
+![SpinningSpikes]([https://github.com/smhucr/MagicLegend/blob/main/Visuals/UnbreakableWallTemple.jpg](https://github.com/smhucr/MagicLegend/blob/main/Visuals/SpikesSpinning.png))
+
 ## Game Art Style
 ![SwingingSpire](https://github.com/smhucr/MagicLegend/blob/main/Visuals/Swingin%20Spire%20Example.png)
 
