@@ -95,7 +95,7 @@ Oyun, mobil platformlar için geliştirilecektir ve Unity oyun motoru kullanıla
 
 ### Dönen Dikenler
 
-![SpinningSpikes]([https://github.com/smhucr/MagicLegend/blob/main/Visuals/UnbreakableWallTemple.jpg](https://github.com/smhucr/MagicLegend/blob/main/Visuals/SpikesSpinning.png))
+![SpinningSpikes](https://github.com/smhucr/MagicLegend/blob/main/Visuals/SpikesSpinning.png)
 
 ## Game Art Style
 ![SwingingSpire](https://github.com/smhucr/MagicLegend/blob/main/Visuals/Swingin%20Spire%20Example.png)
