@@ -69,9 +69,11 @@ Oyun, mobil platformlar için geliştirilecektir ve Unity oyun motoru kullanıla
 
 # Game Visuals Examples
 ## Inspired Games
-
+#Divine Knockout (DKO)
 ![DKO](https://github.com/smhucr/MagicLegend/blob/main/Visuals/DKOGameplay.jpg)
+#Subway Surfers - Temple Run - Merge Grabber
 ![RunGames](https://github.com/smhucr/MagicLegend/blob/main/Visuals/RunGame.jpg)
+#League of Legends - Wild Rift - MLBB
 ![Arena](https://github.com/smhucr/MagicLegend/blob/main/Visuals/ArenaLOL.jpg)
 ![ArenaMechs](https://github.com/smhucr/MagicLegend/blob/main/Visuals/MobileMoba.jpg)
 ## Character Pack
