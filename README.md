@@ -68,6 +68,12 @@ Oyunda kullanılan ses efektleri ve müzikler, ücretsiz kaynaklardan veya ses p
 Oyun, mobil platformlar için geliştirilecektir ve Unity oyun motoru kullanılacaktır.
 
 # Game Visuals Examples
+## Inspired Games
+
+![DKO](https://github.com/smhucr/MagicLegend/blob/main/Visuals/DKOGameplay.jpg)
+![RunGames](https://github.com/smhucr/MagicLegend/blob/main/Visuals/RunGame.jpg)
+![Arena](https://github.com/smhucr/MagicLegend/blob/main/Visuals/ArenaLOL.jpg)
+![ArenaMechs](https://github.com/smhucr/MagicLegend/blob/main/Visuals/MobileMoba.jpg)
 ## Character Pack
 ![CharacterPack](https://github.com/smhucr/MagicLegend/blob/main/Visuals/DKO_CharPack.png)
 
