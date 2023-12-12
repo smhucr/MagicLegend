@@ -5,7 +5,7 @@ using UnityEngine;
 public class ClickItem : MonoBehaviour
 {
 
-public Camera camera;
+public Camera camera = Camera.main;
 //public AudioSource SoundPlayer;
 public GameObject[] CollectedEffect;
 public AudioClip[] ItemSounds;
