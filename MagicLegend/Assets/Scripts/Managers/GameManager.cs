@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Player Settings")]
     public float playerSpeed = 5f;
-    public DynamicJoystick joystick; 
+    public DynamicJoystick joystick;
     public Rigidbody rb;
 
     public AudioSource audioSource;
@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public bool isAvailableShoot;
     public bool startGame;
+    public GameObject scrollHand;
     public float fireRate;
 
     private void MakeInstance()
@@ -26,7 +27,14 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         MakeInstance();
         //DontDestroyOnLoad(gameObject);
+    }
+
+    public void StartGame()
+    {
+        startGame = true;
+        scrollHand.SetActive(false);
     }
 }
