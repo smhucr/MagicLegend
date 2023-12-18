@@ -5,11 +5,19 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public ObjectsPool objectsPool;
 
     [Header("Player Settings")]
     public float playerSpeed = 5f;
     public DynamicJoystick joystick; 
     public Rigidbody rb;
+
+    public AudioSource audioSource;
+    public AudioClip[] audioClips;
+
+    public bool isAvailableShoot;
+    public bool startGame;
+    public float fireRate;
 
     private void MakeInstance()
     {

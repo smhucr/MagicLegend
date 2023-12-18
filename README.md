@@ -70,7 +70,7 @@ Oyun, mobil platformlar için geliştirilecektir ve Unity oyun motoru kullanıla
 # Game Visuals Examples
 ## Images Made For Models
 
-![Boss](https://github.com/smhucr/MagicLegend/blob/main/Visuals/3DBoss.jpg)![MainCharacter](https://github.com/smhucr/MagicLegend/blob/main/Visuals/3DMainCharacter.jpg)
+![Boss](https://github.com/smhucr/MagicLegend/blob/main/Visuals/3DBoss.png)![MainCharacter](https://github.com/smhucr/MagicLegend/blob/main/Visuals/3DMainCharacter.jpg)
 
 ## Inspired Games
 # Divine Knockout (DKO)

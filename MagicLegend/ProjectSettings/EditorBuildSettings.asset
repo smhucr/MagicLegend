@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_OutSourceAssets/MagicArsenal/Demo/Scenes/magic_aoe.unity
-    guid: 283b05eea9ead0544aa1e37cdbf0fb58
-  - enabled: 1
     path: Assets/_OutSourceAssets/MagicArsenal/Demo/Scenes/magic_aura.unity
     guid: 27f678a331798d34887cc39800f31171
   - enabled: 1
