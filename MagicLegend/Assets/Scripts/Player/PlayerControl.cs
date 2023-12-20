@@ -11,10 +11,9 @@ public class PlayerControl : MonoBehaviour
     public float DesiredX;
     public float ClampX;
     public bool levelEndingWorks;
-    //public CameraController control;
+
     public float speed;
     public Transform player;
-    private Color[] randomColor = { Color.blue, Color.green, Color.red };
 
     public Transform mainPlayer
     {
@@ -26,26 +25,24 @@ public class PlayerControl : MonoBehaviour
         {
             player = value;
             mainPlayer.tag = "Player";
-            //control.SetTarget(mainPlayer.transform);
         }
     }
 
-  
+
 
     private void Start()
     {
-        int randomNumber = Random.Range(0, 3);
-        PlayerPrefs.SetInt("PlayerMaterial", randomNumber);
+        
     }
     private void Update()
     {
-      //  if (GameManager.instance.startGame)
+        if (GameManager.instance.startGame)
         {
             HandleSwerve();
 
             if (!levelEndingWorks)
                 HandleControll();
-     
+
         }
 
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,5 +37,10 @@ public class GameManager : MonoBehaviour
     {
         startGame = true;
         scrollHand.SetActive(false);
+    }
+
+    public void WinGame()
+    {
+        SceneManager.LoadScene("RunPart");
     }
 }
