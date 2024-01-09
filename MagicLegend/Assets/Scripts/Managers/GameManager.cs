@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public GameObject scrollHand;
     public float fireRate;
 
+    public GameObject marketOverview;
+
     private void MakeInstance()
     {
         if (instance == null)
@@ -42,5 +44,10 @@ public class GameManager : MonoBehaviour
     public void WinGame()
     {
         SceneManager.LoadScene("RunPart");
+    }
+
+    public void GameOver()
+    {
+
     }
 }
