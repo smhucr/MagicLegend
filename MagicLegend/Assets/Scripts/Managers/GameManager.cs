@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using EasyTransition;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip[] audioClips;
+
+    public TransitionSettings[] transitions;
 
     public bool isAvailableShoot;
     public bool startGame;
@@ -43,7 +45,8 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        SceneManager.LoadScene("RunPart");
+        TransitionManager.Instance().Transition("RunPart", transitions[0], 2f);
+
     }
 
     public void GameOver()
