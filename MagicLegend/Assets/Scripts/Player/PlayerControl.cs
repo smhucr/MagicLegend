@@ -6,13 +6,12 @@ using UnityEngine.EventSystems;
 
 public class PlayerControl : MonoBehaviour
 {
-
+    private GameManager gameManager;
     public float RunSpeed;
     public float DesiredX;
     public float ClampX;
     public bool levelEndingWorks;
-
-    public float speed;
+    
     public Transform player;
 
     public Transform mainPlayer
@@ -32,11 +31,11 @@ public class PlayerControl : MonoBehaviour
 
     private void Start()
     {
-        
+        gameManager = GameManager.instance; //Cached
     }
     private void Update()
     {
-        if (GameManager.instance.startGame)
+        if (gameManager.startGame & !gameManager.isGameOver)
         {
             HandleSwerve();
 

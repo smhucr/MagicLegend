@@ -1,0 +1,7 @@
+-Fırlatılabilir Element (Projectiles)
+
+-Yuvarlak Alan içersine hasar veren yetenek (magic_sphereblast)
+
+-Büyü Yağmuru (Normal yağmur || Meteor Yağmuru || Ok Yağmuru) (magic_rain)
+
+-İleri Doğru Dikdörtgen alan kaplayan büyük yetenek (Big Arrow || Big Meteor || Fire Breath || Gas) (magic_beams)

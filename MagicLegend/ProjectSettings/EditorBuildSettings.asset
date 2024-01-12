@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RunPart.unity
-    guid: 2aec4eab8539fed43ae768b3a488b5aa
-  - enabled: 1
     path: Assets/Scenes/LobbyScene.unity
     guid: f3206272459e0ef4680f93b6a07162d2
+  - enabled: 1
+    path: Assets/Scenes/RunPart.unity
+    guid: 2aec4eab8539fed43ae768b3a488b5aa
   - enabled: 0
     path: Assets/_OutSourceAssets/MagicArsenal/Demo/Scenes/magic_aura.unity
     guid: 27f678a331798d34887cc39800f31171
@@ -89,4 +89,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_OutSourceAssets/MagicArsenal/Demo/Scenes/magic_walls.unity
     guid: 58f8db9124cc886449cfbcd267b324b1
+  - enabled: 0
+    path: Assets/Scenes/TestScenes/SkillBar.unity
+    guid: 5541fb2999389524d95dfea7da78c8ae
   m_configObjects: {}

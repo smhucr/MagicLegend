@@ -5,25 +5,30 @@ using UnityEngine.SceneManagement;
 using EasyTransition;
 public class GameManager : MonoBehaviour
 {
+    [Header("Manager")]
     public static GameManager instance;
     public ObjectsPool objectsPool;
-
+    [Header("UI")]
+    public GameObject scrollHand;
+    public GameObject marketOverview;
+    public GameObject gameOverPanel;
+    public GameObject winGamePanel;
     [Header("Player Settings")]
     public float playerSpeed = 5f;
     public DynamicJoystick joystick;
     public Rigidbody rb;
-
+    [Header("Sound")]
     public AudioSource audioSource;
     public AudioClip[] audioClips;
-
+    [Header("Transition")]
     public TransitionSettings[] transitions;
-
+    [Header("FireRate")]
+    public float fireRate;
+    [Header("ControlCheckers")]
     public bool isAvailableShoot;
     public bool startGame;
-    public GameObject scrollHand;
-    public float fireRate;
-
-    public GameObject marketOverview;
+    public bool isGameOver;
+    public bool isTransitionOver;
 
     private void MakeInstance()
     {
@@ -37,6 +42,11 @@ public class GameManager : MonoBehaviour
         //DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        StartCoroutine(TransitionChecker());
+    }
+
     public void StartGame()
     {
         startGame = true;
@@ -45,12 +55,34 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        TransitionManager.Instance().Transition("RunPart", transitions[0], 2f);
+        isGameOver = true;
+        startGame = false;
+        winGamePanel.SetActive(true);
 
     }
 
     public void GameOver()
     {
-
+        isGameOver = true;
+        startGame = false;
+        gameOverPanel.SetActive(true);
     }
+
+    IEnumerator TransitionChecker()
+    {
+        yield return new WaitForSeconds(1.4f);
+        isTransitionOver = true;
+    }
+
+    public void BackToMainMenu()
+    {
+        TransitionManager.Instance().Transition("LobbyScene", transitions[0], 0.5f);
+    }
+   
+
+    public void RestartRunPart()
+    {
+        TransitionManager.Instance().Transition("RunPart", transitions[0], 0.5f);
+    }
+
 }
