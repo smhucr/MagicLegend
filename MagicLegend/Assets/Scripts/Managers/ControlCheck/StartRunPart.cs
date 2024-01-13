@@ -16,7 +16,7 @@ public class StartRunPart : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            TransitionManager.Instance().Transition("RunPart", transitions[0], 2f);
+            TransitionManager.Instance().Transition("RunPart", transitions[0], 0.5f);
         }
     }
 }

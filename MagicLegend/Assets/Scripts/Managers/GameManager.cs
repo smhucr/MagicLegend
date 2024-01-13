@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Manager")]
     public static GameManager instance;
-    public ObjectsPool objectsPool;
+    public ObjectsPool objectPool;
     [Header("UI")]
     public GameObject scrollHand;
     public GameObject marketOverview;
@@ -84,5 +84,6 @@ public class GameManager : MonoBehaviour
     {
         TransitionManager.Instance().Transition("RunPart", transitions[0], 0.5f);
     }
+
 
 }

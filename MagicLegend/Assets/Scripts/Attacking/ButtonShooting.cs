@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Shooting : MonoBehaviour
+public class ButtonShooting : MonoBehaviour
 {
     [SerializeField] public ObjectsPool objectPool = null;
 
@@ -11,11 +11,12 @@ public class Shooting : MonoBehaviour
     public Transform bulletPoint;
     // Player
     public GameObject player;
+    //Fire Button
+    public Button shootButton;
 
     private void Start()
     {
         GameManager.instance.isAvailableShoot = true;
-        StartCoroutine(Shoot(0));
     }
 
     private void FixedUpdate()
@@ -23,9 +24,8 @@ public class Shooting : MonoBehaviour
         bulletPoint.rotation = player.transform.rotation;
     }
 
-    public IEnumerator Shoot(int objectType)
+    public void Shoot(int objectType)
     {
-        //Spawn New Object
         if (GameManager.instance.isAvailableShoot && GameManager.instance.startGame)
         {
             var obj = objectPool.GetPooledObject(objectType);
@@ -33,17 +33,21 @@ public class Shooting : MonoBehaviour
             obj.transform.position = bulletPoint.position;
             GameManager.instance.audioSource.PlayOneShot(GameManager.instance.audioClips[0], 0.1f);
             StartCoroutine(Disableobj(obj));
+            StartCoroutine(DisableButton(shootButton));
         }
-        yield return new WaitForSeconds(GameManager.instance.fireRate);
-        StartCoroutine(Shoot(objectType));
-
     }
-
 
     // Object Disable
     IEnumerator Disableobj(GameObject obj)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         obj.SetActive(false);
     }
+    IEnumerator DisableButton(Button shootButton)
+    {
+        shootButton.interactable = false;
+        yield return new WaitForSeconds(0.15f);
+        shootButton.interactable = true;
+    }
+
 }

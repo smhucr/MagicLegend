@@ -23811,7 +23811,7 @@ GameObject:
   - component: {fileID: 19824720}
   - component: {fileID: 19965938}
   m_Layer: 0
-  m_Name: RainArcane
+  m_Name: RainArcane 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
