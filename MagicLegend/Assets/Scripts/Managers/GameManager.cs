@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public float playerSpeed = 5f;
     public DynamicJoystick joystick;
     public Rigidbody rb;
+    [Header("Enemy")]
+    public Transform closestEnemy;
     [Header("Sound")]
     public AudioSource audioSource;
     public AudioClip[] audioClips;

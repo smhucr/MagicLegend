@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ButtonShooting : MonoBehaviour
 {
     [SerializeField] public ObjectsPool objectPool = null;
+    [SerializeField] public GameManager gameManager;
     // Player
     public GameObject player;
     [Header("SpawnPoints")]
@@ -31,6 +32,7 @@ public class ButtonShooting : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.instance;
         GameManager.instance.isAvailableShoot = true;
         beamStart = Instantiate(beamStart);
         beamStart.SetActive(false);
@@ -50,12 +52,19 @@ public class ButtonShooting : MonoBehaviour
 
     public void Shoot(int objectType)
     {
-        if (GameManager.instance.isAvailableShoot && GameManager.instance.startGame)
+        if (gameManager.isAvailableShoot && gameManager.startGame)
         {
             var obj = objectPool.GetPooledObject(objectType);
-            obj.transform.rotation = bulletPoint.rotation;
+            if (gameManager.closestEnemy != null)
+            {
+                var tempBulletPoint = bulletPoint;
+                tempBulletPoint.LookAt(gameManager.closestEnemy);
+                obj.transform.rotation = tempBulletPoint.rotation;
+            }
+            else
+                obj.transform.rotation = bulletPoint.rotation;
             obj.transform.position = bulletPoint.position;
-            GameManager.instance.audioSource.PlayOneShot(GameManager.instance.audioClips[0], 0.1f);
+            gameManager.audioSource.PlayOneShot(gameManager.audioClips[0], 0.1f);
             StartCoroutine(Disableobj(obj, 1.5f));
             StartCoroutine(DisableButton(shootButton, 0.15f));
         }
@@ -63,11 +72,14 @@ public class ButtonShooting : MonoBehaviour
 
     public void BlastSphere(int objectType)
     {
-        if (GameManager.instance.isAvailableShoot && GameManager.instance.startGame)
+        if (gameManager.isAvailableShoot && gameManager.startGame)
         {
             var blastSphere = objectPool.GetPooledObject(objectType);
-            blastSphere.transform.position = magicAreaPoint.position;
-            GameManager.instance.audioSource.PlayOneShot(GameManager.instance.audioClips[0], 0.1f);
+            if (gameManager.closestEnemy != null)
+                blastSphere.transform.position = gameManager.closestEnemy.position;
+            else
+                blastSphere.transform.position = magicAreaPoint.position;
+            gameManager.audioSource.PlayOneShot(gameManager.audioClips[0], 0.1f);
             StartCoroutine(Disableobj(blastSphere, 4f));
             StartCoroutine(DisableButton(blastButton, 3f));
         }
@@ -75,11 +87,14 @@ public class ButtonShooting : MonoBehaviour
 
     public void MagicRain(int objectType)
     {
-        if (GameManager.instance.isAvailableShoot && GameManager.instance.startGame)
+        if (gameManager.isAvailableShoot && gameManager.startGame)
         {
             var magicRain = objectPool.GetPooledObject(objectType);
-            magicRain.transform.position = magicAreaPoint.position;
-            GameManager.instance.audioSource.PlayOneShot(GameManager.instance.audioClips[0], 0.1f);
+            if (gameManager.closestEnemy != null)
+                magicRain.transform.position = gameManager.closestEnemy.position;
+            else
+                magicRain.transform.position = magicAreaPoint.position;
+            gameManager.audioSource.PlayOneShot(gameManager.audioClips[0], 0.1f);
             StartCoroutine(Disableobj(magicRain, 5f));
             StartCoroutine(DisableButton(rainButton, 8f));
         }
@@ -87,11 +102,14 @@ public class ButtonShooting : MonoBehaviour
 
     public void BeamShootOnPressed()
     {
-        GameManager.instance.isMoveable = false;
+        gameManager.isMoveable = false;
         beamStart.transform.position = beamStartPoint.position;
         line.SetPosition(0, beamStartPoint.position);
-        beamEnd.transform.position = beamEndPoint.position;
-        line.SetPosition(1, beamEndPoint.position);
+        if (gameManager.closestEnemy != null)
+            beamEnd.transform.position = gameManager.closestEnemy.position;
+        else
+            beamEnd.transform.position = beamEndPoint.position;
+        line.SetPosition(1, beamEnd.transform.position);
         beamStart.transform.LookAt(beamEnd.transform.position);
         beamEnd.transform.LookAt(beamStart.transform.position);
 
@@ -102,7 +120,7 @@ public class ButtonShooting : MonoBehaviour
 
     public void BeamShootNonPressed()
     {
-        GameManager.instance.isMoveable = true;
+        gameManager.isMoveable = true;
         beam.SetActive(false);
         beamStart.SetActive(false);
         beamEnd.SetActive(false);
