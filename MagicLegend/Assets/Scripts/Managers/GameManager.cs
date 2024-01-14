@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public bool startGame;
     public bool isGameOver;
     public bool isTransitionOver;
-
+    public bool isMoveable;
     private void MakeInstance()
     {
         if (instance == null)

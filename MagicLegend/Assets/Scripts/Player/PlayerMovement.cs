@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Transform playerMeshObject; 
+    public Transform playerMeshObject;
 
     private DynamicJoystick joystick;
     private Rigidbody rb;
@@ -19,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (GameManager.instance.isMoveable)
+            MovePlayer();
     }
 
     private void MovePlayer()
