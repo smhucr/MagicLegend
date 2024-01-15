@@ -1557,7 +1557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c35552f923c9e444b87ffe3e9c91266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsPool: {fileID: 45301199}
+  objectPool: {fileID: 0}
   scrollHand: {fileID: 29458053}
   marketOverview: {fileID: 0}
   gameOverPanel: {fileID: 635259989}
@@ -1565,6 +1565,7 @@ MonoBehaviour:
   playerSpeed: 5
   joystick: {fileID: 0}
   rb: {fileID: 1937709386}
+  closestEnemy: {fileID: 0}
   audioSource: {fileID: 965556820}
   audioClips:
   - {fileID: 8300000, guid: 139331ff6cd0b8845bf9cd5982c7bbcf, type: 3}
@@ -1580,6 +1581,7 @@ MonoBehaviour:
   startGame: 0
   isGameOver: 0
   isTransitionOver: 0
+  isMoveable: 0
 --- !u!4 &600687188
 Transform:
   m_ObjectHideFlags: 0
@@ -2827,7 +2829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -24.999878, y: 163.5}
+  m_AnchoredPosition: {x: -24.999878, y: 367.59998}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1133616045
@@ -3594,7 +3596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -24.999878, y: -90.100006}
+  m_AnchoredPosition: {x: -24.999878, y: 114}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1483603778

@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public Rigidbody rb;
     [Header("Enemy")]
     public Transform closestEnemy;
+    [Header("VFX")]
+    public GameObject[] playerAuraCircles;
     [Header("Sound")]
     public AudioSource audioSource;
     public AudioClip[] audioClips;
