@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     [Header("Enemy")]
     public Transform closestEnemy;
     [Header("VFX")]
+    public GameObject[] projectiles;
+    public GameObject[] explosions;
+    public GameObject[] sphereBlasts;
+    public GameObject[] magicRain;
+    public GameObject[] auraCasters;
     public GameObject[] playerAuraCircles;
     [Header("Sound")]
     public AudioSource audioSource;
