@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject marketOverview;
     public GameObject gameOverPanel;
     public GameObject winGamePanel;
+    [Header("Player")]
+    public GameObject playerParent;
     [Header("Player Settings")]
     public float playerSpeed = 5f;
     public DynamicJoystick joystick;
@@ -20,12 +22,14 @@ public class GameManager : MonoBehaviour
     [Header("Enemy")]
     public Transform closestEnemy;
     [Header("VFX")]
+    public int selectedElement;
     public GameObject[] projectiles;
     public GameObject[] explosions;
     public GameObject[] sphereBlasts;
     public GameObject[] magicRain;
     public GameObject[] auraCasters;
-    public GameObject[] playerAuraCircles;
+    public GameObject[] mergedAuraCircles;
+    public GameObject currentMergedAura;
     [Header("Sound")]
     public AudioSource audioSource;
     public AudioClip[] audioClips;
@@ -48,11 +52,18 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         MakeInstance();
+        objectPool.pools[0].objectPrefab = projectiles[selectedElement];
+        objectPool.pools[1].objectPrefab = sphereBlasts[selectedElement];
+        objectPool.pools[2].objectPrefab = magicRain[selectedElement];
+        objectPool.pools[3].objectPrefab = auraCasters[selectedElement];
+        objectPool.pools[4].objectPrefab = mergedAuraCircles[selectedElement];
+
         //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
+        ChangeMergedAura(); // Changing Player's Aura
         StartCoroutine(TransitionChecker());
     }
 
@@ -83,11 +94,19 @@ public class GameManager : MonoBehaviour
         isTransitionOver = true;
     }
 
+    public void ChangeMergedAura()
+    {
+        var mergedAura = objectPool.GetPooledObject(4);
+        mergedAura.transform.parent = playerParent.transform;
+        mergedAura.SetActive(true);
+        currentMergedAura = mergedAura;
+    }
+
     public void BackToMainMenu()
     {
         TransitionManager.Instance().Transition("LobbyScene", transitions[0], 0.5f);
     }
-   
+
 
     public void RestartRunPart()
     {

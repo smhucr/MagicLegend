@@ -76,7 +76,7 @@ public class ButtonShooting : MonoBehaviour
         {
             var auraCast = objectPool.GetPooledObject(3);
             auraCast.transform.position = player.transform.position;
-            gameManager.playerAuraCircles[0].SetActive(false);
+            gameManager.currentMergedAura.SetActive(false);
             var blastSphere = objectPool.GetPooledObject(objectType);
             if (gameManager.closestEnemy != null)
                 blastSphere.transform.position = gameManager.closestEnemy.position;
@@ -85,7 +85,7 @@ public class ButtonShooting : MonoBehaviour
             gameManager.audioSource.PlayOneShot(gameManager.audioClips[0], 0.1f);
             StartCoroutine(Disableobj(blastSphere, 4f));
             StartCoroutine(Disableobj(auraCast, 1f));
-            StartCoroutine(WaitingAura(gameManager.playerAuraCircles[0]));
+            StartCoroutine(WaitingAura(gameManager.currentMergedAura));
             StartCoroutine(DisableButton(blastButton, 3f));
         }
     }
@@ -96,7 +96,7 @@ public class ButtonShooting : MonoBehaviour
         {
             var auraCast = objectPool.GetPooledObject(3);
             auraCast.transform.position = player.transform.position;
-            gameManager.playerAuraCircles[0].SetActive(false);
+            gameManager.currentMergedAura.SetActive(false);
             var magicRain = objectPool.GetPooledObject(objectType);
             if (gameManager.closestEnemy != null)
                 magicRain.transform.position = gameManager.closestEnemy.position;
@@ -105,7 +105,7 @@ public class ButtonShooting : MonoBehaviour
             gameManager.audioSource.PlayOneShot(gameManager.audioClips[0], 0.1f);
             StartCoroutine(Disableobj(magicRain, 5f));
             StartCoroutine(Disableobj(auraCast, 1f));
-            StartCoroutine(WaitingAura(gameManager.playerAuraCircles[0]));
+            StartCoroutine(WaitingAura(gameManager.currentMergedAura));
             StartCoroutine(DisableButton(rainButton, 8f));
         }
     }

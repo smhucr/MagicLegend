@@ -2181,81 +2181,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1789236581
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8004819841911222611}
-    m_Modifications:
-    - target: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633477047639332035, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-        type: 3}
-      propertyPath: m_Name
-      value: MergedAuraArcane
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dd7d1d1f5cfa78949a17ae04ef166cc3, type: 3}
---- !u!4 &1789236582 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1002113679904489435, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1789236581}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1908446703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2955,7 +2880,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3430905251401552386}
-  m_LocalRotation: {x: 0.4516039, y: -0.00000019539719, z: 0.00000009890192, w: 0.8922186}
+  m_LocalRotation: {x: 0.4516039, y: -0.00000015197561, z: 0.00000007692373, w: 0.8922186}
   m_LocalPosition: {x: 0.00000389336, y: 14.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3103,15 +3028,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c35552f923c9e444b87ffe3e9c91266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPool: {fileID: 0}
+  objectPool: {fileID: 1937500871127517295}
   scrollHand: {fileID: 0}
   marketOverview: {fileID: 2105006218}
   gameOverPanel: {fileID: 0}
   winGamePanel: {fileID: 0}
+  playerParent: {fileID: 559959270141463984}
   playerSpeed: 5
   joystick: {fileID: 1410710491}
   rb: {fileID: 4136724096776445577}
   closestEnemy: {fileID: 0}
+  selectedElement: 0
   projectiles:
   - {fileID: 100008, guid: 148c388e92c1e1047be7e5149100e957, type: 3}
   - {fileID: 100010, guid: ff5eb574886c9394781c3a50fd351b8e, type: 3}
@@ -3131,17 +3058,18 @@ MonoBehaviour:
   - {fileID: 138484, guid: 3da863bba399f924b91cb29b4558d4f8, type: 3}
   - {fileID: 154454, guid: f6f30fa1315d9264987a198d4cbf4a54, type: 3}
   - {fileID: 140720, guid: ae5560a42b1016d44a89116074409a16, type: 3}
-  - {fileID: 157740, guid: f1bcff5e4b5fe54489635590bfeffee2, type: 3}
+  - {fileID: 114774, guid: 11e2e6655f9b7c6488fb090ed99d2d9e, type: 3}
   auraCasters:
   - {fileID: 157306, guid: 3418e104c23206145b8660e5d4305c34, type: 3}
   - {fileID: 109812, guid: 9072c8bb22876d24e99df6c58041b768, type: 3}
   - {fileID: 168396, guid: 4ad9f9806d8fdde4d892cfb18c7c3c63, type: 3}
   - {fileID: 176482, guid: 3cd3a98bfdc3e8440a86e004e6437f0f, type: 3}
-  playerAuraCircles:
+  mergedAuraCircles:
   - {fileID: 6714089643884990133, guid: f5daa0a9d1078364eb91d3adb581751e, type: 3}
   - {fileID: 3659582760119522018, guid: 47d6e786d4eb01a4d9f82373da08df84, type: 3}
   - {fileID: 1178666609244591758, guid: e89d919609c67354db7d9313a9b58cb3, type: 3}
   - {fileID: 3076962150967162842, guid: e2e5a21d107030143a074bd49d39830f, type: 3}
+  currentMergedAura: {fileID: 0}
   audioSource: {fileID: 5013156749305899265}
   audioClips:
   - {fileID: 8300000, guid: 139331ff6cd0b8845bf9cd5982c7bbcf, type: 3}
@@ -3377,7 +3305,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3362674204631495938}
-  m_LocalRotation: {x: 0.4516039, y: -0.00000019539719, z: 0.00000009890192, w: 0.8922186}
+  m_LocalRotation: {x: 0.4516039, y: -0.00000015197561, z: 0.00000007692373, w: 0.8922186}
   m_LocalPosition: {x: 0.00000389336, y: 14.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3475,7 +3403,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8458798504926891801}
-  - {fileID: 1789236582}
   m_Father: {fileID: 3343809488067942959}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
