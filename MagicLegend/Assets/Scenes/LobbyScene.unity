@@ -1463,6 +1463,100 @@ PrefabInstance:
       propertyPath: magicAreaPoint
       value: 
       objectReference: {fileID: 243681480}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: selectedElement
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[0].beam
+      value: 
+      objectReference: {fileID: 168570, guid: 2f7f590e37a032d468d0c82a2a60c19a, type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[0].line
+      value: 
+      objectReference: {fileID: 12018526, guid: 2f7f590e37a032d468d0c82a2a60c19a,
+        type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[1].beam
+      value: 
+      objectReference: {fileID: 168570, guid: 72b830bbd85e3af408de29cb9834298d, type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[1].line
+      value: 
+      objectReference: {fileID: 12018526, guid: 72b830bbd85e3af408de29cb9834298d,
+        type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[2].beam
+      value: 
+      objectReference: {fileID: 168570, guid: 6e5cd13a75b0eb84096f7b8c95c3febc, type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[2].line
+      value: 
+      objectReference: {fileID: 12018526, guid: 6e5cd13a75b0eb84096f7b8c95c3febc,
+        type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[3].beam
+      value: 
+      objectReference: {fileID: 168570, guid: ced772d96a8ec9f49a45e9e77c7fa455, type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[3].line
+      value: 
+      objectReference: {fileID: 12018526, guid: ced772d96a8ec9f49a45e9e77c7fa455,
+        type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[0].beamEnd
+      value: 
+      objectReference: {fileID: 143488, guid: 846e29a093536c949a1cdd1980c2a78c, type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[1].beamEnd
+      value: 
+      objectReference: {fileID: 113256, guid: efeea82ceba5c2d4b80ee86ccf783ee3, type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[2].beamEnd
+      value: 
+      objectReference: {fileID: 182458, guid: c18e58d521ecc9141aae1fb03ff43f20, type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[3].beamEnd
+      value: 
+      objectReference: {fileID: 110462, guid: 3e6454fae803f7c449bfcdf2286d04dd, type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[0].beamStart
+      value: 
+      objectReference: {fileID: 101350, guid: 4f2173287879e014181bcdfdb48e935d, type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[1].beamStart
+      value: 
+      objectReference: {fileID: 134198, guid: 18a6049bf2e56b7499fad8db5505801a, type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[2].beamStart
+      value: 
+      objectReference: {fileID: 146808, guid: 510c289591988df40bda4b4fd3ef2b9d, type: 3}
+    - target: {fileID: 8665961117289502625, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
+        type: 3}
+      propertyPath: beams.Array.data[3].beamStart
+      value: 
+      objectReference: {fileID: 117412, guid: 41c05c0c72a1c474a9f0e6ca61eabb99, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac1ebf9782cab9043a027ad6d8af6b7d, type: 3}
 --- !u!114 &1014423070 stripped
@@ -3038,7 +3132,7 @@ MonoBehaviour:
   joystick: {fileID: 1410710491}
   rb: {fileID: 4136724096776445577}
   closestEnemy: {fileID: 0}
-  selectedElement: 0
+  selectedElement: 3
   projectiles:
   - {fileID: 100008, guid: 148c388e92c1e1047be7e5149100e957, type: 3}
   - {fileID: 100010, guid: ff5eb574886c9394781c3a50fd351b8e, type: 3}

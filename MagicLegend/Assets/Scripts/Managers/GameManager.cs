@@ -52,11 +52,6 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         MakeInstance();
-        objectPool.pools[0].objectPrefab = projectiles[selectedElement];
-        objectPool.pools[1].objectPrefab = sphereBlasts[selectedElement];
-        objectPool.pools[2].objectPrefab = magicRain[selectedElement];
-        objectPool.pools[3].objectPrefab = auraCasters[selectedElement];
-        objectPool.pools[4].objectPrefab = mergedAuraCircles[selectedElement];
 
         //DontDestroyOnLoad(gameObject);
     }
@@ -88,6 +83,15 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(true);
     }
 
+    public void SetSkillPrefabs()
+    {
+        objectPool.pools[0].objectPrefab = projectiles[selectedElement];
+        objectPool.pools[1].objectPrefab = sphereBlasts[selectedElement];
+        objectPool.pools[2].objectPrefab = magicRain[selectedElement];
+        objectPool.pools[3].objectPrefab = auraCasters[selectedElement];
+        objectPool.pools[4].objectPrefab = mergedAuraCircles[selectedElement];
+
+    }
     IEnumerator TransitionChecker()
     {
         yield return new WaitForSeconds(1.4f);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,8 @@ public class ButtonShooting : MonoBehaviour
     public Transform magicAreaPoint;
     public Transform beamStartPoint;
     public Transform beamEndPoint;
-
+    [Header("Skill Buttons")]
+    public int selectedElement;
     [Header("Skill Buttons")]
     public Button shootButton;
     public Button blastButton;
@@ -30,10 +32,35 @@ public class ButtonShooting : MonoBehaviour
     [SerializeField]
     private LineRenderer line;
 
+
+    [Serializable]
+    public struct Beam
+    {
+        [SerializeField] public GameObject beamStart;
+        [SerializeField] public GameObject beam;
+        [SerializeField] public GameObject beamEnd;
+        [SerializeField] public LineRenderer line;
+    }
+
+    [SerializeField] public Beam[] beams = null;
+
+    private void Awake()
+    {
+        GameManager.instance.SetSkillPrefabs();
+
+    }
+
     private void Start()
     {
         gameManager = GameManager.instance;
-        GameManager.instance.isAvailableShoot = true;
+        //Assign Beam
+        selectedElement = gameManager.selectedElement;
+        beamStart = beams[selectedElement].beamStart;
+        beamEnd = beams[selectedElement].beamEnd;
+        beam = beams[selectedElement].beam;
+        line = beams[selectedElement].line;
+        //Create Beam
+        gameManager.isAvailableShoot = true;
         beamStart = Instantiate(beamStart);
         beamStart.SetActive(false);
         beamEnd = Instantiate(beamEnd);
