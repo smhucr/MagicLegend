@@ -52,7 +52,8 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         MakeInstance();
-
+        selectedElement = PlayerPrefs.GetInt("SelectedElement");
+        SetSkillPrefabs();
         //DontDestroyOnLoad(gameObject);
     }
 
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void SetSkillPrefabs()
     {
+
         objectPool.pools[0].objectPrefab = projectiles[selectedElement];
         objectPool.pools[1].objectPrefab = sphereBlasts[selectedElement];
         objectPool.pools[2].objectPrefab = magicRain[selectedElement];

@@ -293,6 +293,15 @@ MonoBehaviour:
   - objectPrefab: {fileID: 6617868343883736302, guid: 9f72aeda21757ce4a8b8809587ca0ea3,
       type: 3}
     poolSize: 10
+  - objectPrefab: {fileID: 0}
+    poolSize: 0
+  - objectPrefab: {fileID: 0}
+    poolSize: 0
+  - objectPrefab: {fileID: 0}
+    poolSize: 0
+  - objectPrefab: {fileID: 6633477047639332035, guid: dd7d1d1f5cfa78949a17ae04ef166cc3,
+      type: 3}
+    poolSize: 1
 --- !u!1 &51517048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,15 +1566,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c35552f923c9e444b87ffe3e9c91266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPool: {fileID: 0}
+  objectPool: {fileID: 45301199}
   scrollHand: {fileID: 29458053}
   marketOverview: {fileID: 0}
   gameOverPanel: {fileID: 635259989}
   winGamePanel: {fileID: 129127920}
+  playerParent: {fileID: 1576581944}
   playerSpeed: 5
   joystick: {fileID: 0}
   rb: {fileID: 1937709386}
   closestEnemy: {fileID: 0}
+  selectedElement: 0
+  projectiles:
+  - {fileID: 100008, guid: 148c388e92c1e1047be7e5149100e957, type: 3}
+  - {fileID: 100010, guid: ff5eb574886c9394781c3a50fd351b8e, type: 3}
+  - {fileID: 100002, guid: e68902339516dba4f80826e2933a7ee5, type: 3}
+  - {fileID: 100004, guid: 7108a5d820a9cd044a916b504bc2ae74, type: 3}
+  explosions:
+  - {fileID: 100014, guid: ec25bdb183167ea449d35751cb631d7f, type: 3}
+  - {fileID: 100010, guid: c200c8b3899c7c148920fbf9d347d7d0, type: 3}
+  - {fileID: 168916, guid: a886892b6e3f67b4795e1219185f0890, type: 3}
+  - {fileID: 100010, guid: 8479ecff0c967dd499243eaa946207fc, type: 3}
+  sphereBlasts:
+  - {fileID: 118354, guid: bc71014072762b842a441a15e2285f36, type: 3}
+  - {fileID: 108244, guid: 8b8add1115b56164ca5f060a5c5a1899, type: 3}
+  - {fileID: 149100, guid: d5598cccf22010f4c968329ef655c126, type: 3}
+  - {fileID: 183430, guid: b2a3d47ffd3390b4da0270ac98d29ad0, type: 3}
+  magicRain:
+  - {fileID: 138484, guid: 3da863bba399f924b91cb29b4558d4f8, type: 3}
+  - {fileID: 154454, guid: f6f30fa1315d9264987a198d4cbf4a54, type: 3}
+  - {fileID: 140720, guid: ae5560a42b1016d44a89116074409a16, type: 3}
+  - {fileID: 114774, guid: 11e2e6655f9b7c6488fb090ed99d2d9e, type: 3}
+  auraCasters:
+  - {fileID: 157306, guid: 3418e104c23206145b8660e5d4305c34, type: 3}
+  - {fileID: 109812, guid: 9072c8bb22876d24e99df6c58041b768, type: 3}
+  - {fileID: 168396, guid: 4ad9f9806d8fdde4d892cfb18c7c3c63, type: 3}
+  - {fileID: 176482, guid: 3cd3a98bfdc3e8440a86e004e6437f0f, type: 3}
+  mergedAuraCircles:
+  - {fileID: 6714089643884990133, guid: f5daa0a9d1078364eb91d3adb581751e, type: 3}
+  - {fileID: 3659582760119522018, guid: 47d6e786d4eb01a4d9f82373da08df84, type: 3}
+  - {fileID: 1178666609244591758, guid: e89d919609c67354db7d9313a9b58cb3, type: 3}
+  - {fileID: 3076962150967162842, guid: e2e5a21d107030143a074bd49d39830f, type: 3}
+  currentMergedAura: {fileID: 0}
   audioSource: {fileID: 965556820}
   audioClips:
   - {fileID: 8300000, guid: 139331ff6cd0b8845bf9cd5982c7bbcf, type: 3}
@@ -5047,7 +5089,7 @@ PrefabInstance:
     - target: {fileID: 503539815480656482, guid: d0012acb8203a94409fe25a25b5188fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.25
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 503539815480656482, guid: d0012acb8203a94409fe25a25b5188fd,
         type: 3}

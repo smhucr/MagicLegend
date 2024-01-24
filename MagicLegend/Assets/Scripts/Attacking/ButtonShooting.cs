@@ -44,12 +44,6 @@ public class ButtonShooting : MonoBehaviour
 
     [SerializeField] public Beam[] beams = null;
 
-    private void Awake()
-    {
-        GameManager.instance.SetSkillPrefabs();
-
-    }
-
     private void Start()
     {
         gameManager = GameManager.instance;
