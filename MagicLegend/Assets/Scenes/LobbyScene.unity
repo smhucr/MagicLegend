@@ -2199,12 +2199,12 @@ GameObject:
   - component: {fileID: 1325952530}
   - component: {fileID: 1325952529}
   m_Layer: 5
-  m_Name: Market
+  m_Name: MarketCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1325952528
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4210,7 +4210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 1937500871127517295}
   scrollHand: {fileID: 0}
-  marketOverview: {fileID: 2105006218}
+  marketOverview: {fileID: 1325952527}
   gameOverPanel: {fileID: 0}
   winGamePanel: {fileID: 0}
   playerParent: {fileID: 559959270141463984}

@@ -15,8 +15,6 @@ public class StartGameController : MonoBehaviour
         m_EventSystem = GetComponent<EventSystem>();
     }
 
-    
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) & GameManager.instance.isTransitionOver)

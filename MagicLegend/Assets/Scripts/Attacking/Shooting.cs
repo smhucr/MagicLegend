@@ -38,8 +38,6 @@ public class Shooting : MonoBehaviour
         StartCoroutine(Shoot(objectType));
 
     }
-
-
     // Object Disable
     IEnumerator Disableobj(GameObject obj)
     {

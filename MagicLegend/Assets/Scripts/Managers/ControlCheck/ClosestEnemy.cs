@@ -31,7 +31,6 @@ public class ClosestEnemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
-
     void TargetClosestEnemy()
     {
         Vector3 cachedPosition = transform.position;

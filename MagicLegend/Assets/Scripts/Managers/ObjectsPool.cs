@@ -13,7 +13,6 @@ public class ObjectsPool : MonoBehaviour
         [SerializeField] public GameObject objectPrefab;
         [SerializeField] public int poolSize;
     }
-
     [SerializeField] public Pool[] pools = null;
 
     private void Awake()
@@ -32,7 +31,6 @@ public class ObjectsPool : MonoBehaviour
             }
         }
     }
-
     // Object call
     public GameObject GetPooledObject(int objectType)
     {

@@ -156,8 +156,6 @@ public class ButtonShooting : MonoBehaviour
         beamStart.SetActive(false);
         beamEnd.SetActive(false);
     }
-
-
     // Object Disable
     IEnumerator Disableobj(GameObject obj, float timer)
     {
@@ -170,7 +168,6 @@ public class ButtonShooting : MonoBehaviour
         yield return new WaitForSeconds(timer);
         shootButton.interactable = true;
     }
-
     IEnumerator WaitingAura(GameObject gameObject)
     {
 
