@@ -14,13 +14,18 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject winGamePanel;
     [Header("Player")]
-    public GameObject playerParent;
+    public GameObject playerParent; // Moving Player
+    public GameObject mainPlayer; // Player who has script features
+    public int playerHealth;
+    public float playerDamageMultiplier;    
     [Header("Player Settings")]
     public float playerSpeed = 5f;
     public DynamicJoystick joystick;
     public Rigidbody rb;
     [Header("Enemy")]
     public Transform closestEnemy;
+    [Header("Dummy")]
+    public GameObject dummy;
     [Header("VFX")]
     public int selectedElement;
     public GameObject[] projectiles;
@@ -119,5 +124,11 @@ public class GameManager : MonoBehaviour
         TransitionManager.Instance().Transition("RunPart", transitions[0], 0.5f);
     }
 
+
+    public IEnumerator DisableMoveable(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isMoveable = false;
+    }
 
 }

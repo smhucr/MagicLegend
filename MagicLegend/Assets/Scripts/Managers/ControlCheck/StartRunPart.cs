@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using EasyTransition;
 public class StartRunPart : MonoBehaviour
 {
+    public GameObject mainVirtualCamera;
+
     public TransitionSettings[] transitions;
 
     private void Start()
@@ -16,7 +18,10 @@ public class StartRunPart : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            TransitionManager.Instance().Transition("RunPart", transitions[0], 0.5f);
+            StartCoroutine(GameManager.instance.DisableMoveable(0.2f));
+            mainVirtualCamera.SetActive(false);
+            TransitionManager.Instance().Transition("RunPart", transitions[0], 1.1f);
         }
     }
+
 }

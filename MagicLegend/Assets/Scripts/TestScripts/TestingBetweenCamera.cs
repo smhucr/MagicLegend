@@ -16,6 +16,7 @@ public class TestingBetweenCamera : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         StartCoroutine(FPSCor());
 
+
     }
     private void Start()
     {
