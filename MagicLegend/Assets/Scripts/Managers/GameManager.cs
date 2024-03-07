@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using EasyTransition;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     [Header("Manager")]
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     public GameObject marketOverview;
     public GameObject gameOverPanel;
     public GameObject winGamePanel;
+    [Header("Money")]
+    public int currentMoney;
+    public TextMeshProUGUI currentMoneyText;
     [Header("Player")]
     public GameObject playerParent; // Moving Player
     public GameObject mainPlayer; // Player who has script features
@@ -28,6 +32,10 @@ public class GameManager : MonoBehaviour
     public GameObject dummy;
     [Header("VFX")]
     public int selectedElement;
+    public int fireElementLevel;
+    public int frostElementLevel;
+    public int posionElementLevel;
+    public int lightningElementLevel;
     public GameObject[] projectiles;
     public GameObject[] explosions;
     public GameObject[] sphereBlasts;
@@ -66,6 +74,12 @@ public class GameManager : MonoBehaviour
     {
         ChangeMergedAura(); // Changing Player's Aura
         StartCoroutine(TransitionChecker());
+        currentMoney = PlayerPrefs.GetInt("CurrentMoney");
+        currentMoneyText.text = "Essence: " + currentMoney.ToString();
+        fireElementLevel = PlayerPrefs.GetInt("FireElementLevel");
+        frostElementLevel = PlayerPrefs.GetInt("FrostElementLevel");
+        posionElementLevel = PlayerPrefs.GetInt("PoisonElementLevel");
+        lightningElementLevel = PlayerPrefs.GetInt("LightningElementLevel");
     }
 
     public void StartGame()

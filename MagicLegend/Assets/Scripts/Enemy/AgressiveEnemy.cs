@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,8 @@ public class AgressiveEnemy : MainEnemy
         maxHealth = health;
         moveSpeed = 4f;
         follow_distance = 1f;
-        player = GameManager.instance.mainPlayer.transform;
+        playerComponentObject = GameManager.instance.mainPlayer.transform;
+        playerFollowObject = GameManager.instance.playerParent.transform;
     }
 
     public override void Idle()
@@ -28,10 +30,10 @@ public class AgressiveEnemy : MainEnemy
     {
         print("I am chasing");
         // Enemy Chase Player 
-        distance = Vector3.Distance(transform.position, player.position);
+        distance = Vector3.Distance(transform.position, playerFollowObject.position);
         if (distance > follow_distance)
         {
-            transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerFollowObject.position.x,transform.position.y,playerFollowObject.position.z), moveSpeed * Time.deltaTime);
         }
         else
         {
@@ -47,8 +49,8 @@ public class AgressiveEnemy : MainEnemy
         if (isAttackable)
         {
             //Enemy Attack Animation
-            player.GetComponent<MainPlayer>().TakeDamage(damageValue);
-            distance = Vector3.Distance(transform.position, player.position);
+            playerComponentObject.GetComponent<MainPlayer>().TakeDamage(damageValue);
+            distance = Vector3.Distance(transform.position, playerFollowObject.position);
             if (distance > follow_distance)
             {
                 enemyCurrentState = EnemyState.Chase;

@@ -5,7 +5,8 @@ using UnityEngine;
 public abstract class MainEnemy : MonoBehaviour
 {
     [Header("MainPlayer")]
-    public Transform player;
+    public Transform playerComponentObject;
+    public Transform playerFollowObject;
     [Header("EnemyFeatures")]
     [SerializeField]
     public float health;
@@ -38,7 +39,7 @@ public abstract class MainEnemy : MonoBehaviour
     private void Awake()
     {
         maxHealth = health;
-        player = GameManager.instance.mainPlayer.transform;
+        playerComponentObject = GameManager.instance.mainPlayer.transform;
         isAttackable = true;
     }
 
