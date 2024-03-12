@@ -5,11 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using EasyTransition;
 using TMPro;
+using System;
 public class GameManager : MonoBehaviour
 {
     [Header("Manager")]
     public static GameManager instance;
     public ObjectsPool objectPool;
+    [Header("LevelState")]
+    public SceneState currentSceneState;
     [Header("UI")]
     public GameObject scrollHand;
     public GameObject marketOverview;
@@ -75,6 +78,7 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
+        ChangeSceneState();
         elementLevels = new int[4];
         Application.targetFrameRate = 60;
         MakeInstance();
@@ -92,13 +96,17 @@ public class GameManager : MonoBehaviour
         else if (selectedElement == 3)
             elementLevels[selectedElement] = PlayerPrefs.GetInt("LightningElementLevel");
 
-        elementLevelCost = PlayerPrefs.GetInt("ElementLevelCost" + selectedElement);
-        if (elementLevelCost == 0)
+        if (currentSceneState == SceneState.Lobby)
         {
-            elementLevelCost = 100;
-            PlayerPrefs.SetInt("ElementLevelCost" + selectedElement, elementLevelCost);
+            elementLevelCost = PlayerPrefs.GetInt("ElementLevelCost" + selectedElement);
+            if (elementLevelCost == 0)
+            {
+                elementLevelCost = 100;
+                PlayerPrefs.SetInt("ElementLevelCost" + selectedElement, elementLevelCost);
+            }
         }
-        elementLevelCostText.text = elementLevelCost.ToString();
+
+
 
         currentElementLevel = GetCurrentElementLevel();
         if (currentElementLevel == 0)
@@ -107,18 +115,22 @@ public class GameManager : MonoBehaviour
             SetCurrentElementLevel(selectedElement, currentElementLevel);
         }
 
-        if (elementLevels[selectedElement] >= 20)
+        if (currentSceneState == SceneState.Lobby)
         {
-            elementLevelUpgradeToText.text = "Max Level";
-            elementLevelCostText.text = "Max Level";
-            elementLevelButton.interactable = false;
+            if (elementLevels[selectedElement] >= 20)
+            {
+                elementLevelUpgradeToText.text = "Max Level";
+                elementLevelCostText.text = "Max Level";
+                elementLevelButton.interactable = false;
+            }
+            else
+            {
+                elementLevelUpgradeToText.text = "Upgrade to " + (elementLevels[selectedElement] + 1).ToString();
+                elementLevelCostText.text = elementLevelCost.ToString();
+            }
         }
-        else
-        {
-            elementLevelUpgradeToText.text = "Upgrade to " + (elementLevels[selectedElement] + 1).ToString();
-            elementLevelCostText.text = elementLevelCost.ToString();
-        }
-        
+
+
         //Assign FireRate
         fireRateLevel = PlayerPrefs.GetInt("FireRateLevel");
         fireRate = PlayerPrefs.GetFloat("FireRate");
@@ -139,16 +151,19 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("FireRateCost", fireRateCost);
         }
 
-        if (fireRateLevel >= 20)
+        if (currentSceneState == SceneState.Lobby)
         {
-            fireRateUpgradeToText.text = "Max Level";
-            fireRateCostText.text = "Max Level";
-            fireRateButton.interactable = false;
-        }
-        else
-        {
-            fireRateUpgradeToText.text = "Upgrade to " + (fireRateLevel + 1).ToString();
-            fireRateCostText.text = fireRateCost.ToString();
+            if (fireRateLevel >= 20)
+            {
+                fireRateUpgradeToText.text = "Max Level";
+                fireRateCostText.text = "Max Level";
+                fireRateButton.interactable = false;
+            }
+            else
+            {
+                fireRateUpgradeToText.text = "Upgrade to " + (fireRateLevel + 1).ToString();
+                fireRateCostText.text = fireRateCost.ToString();
+            }
         }
 
 
@@ -163,6 +178,24 @@ public class GameManager : MonoBehaviour
         StartCoroutine(TransitionChecker());
 
         print("ElementLevelCost" + selectedElement);
+
+    }
+
+    public void ChangeSceneState()
+    {
+        if (SceneManager.GetActiveScene().name == "LobbyScene")
+        {
+            currentSceneState = SceneState.Lobby;
+        }
+        else if (SceneManager.GetActiveScene().name == "RunPart")
+        {
+            currentSceneState = SceneState.RunPart;
+        }
+        else if (SceneManager.GetActiveScene().name == "BossArea")
+        {
+            currentSceneState = SceneState.BossPart;
+        }
+
 
     }
 
@@ -331,6 +364,14 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         isMoveable = false;
+    }
+
+
+    public enum SceneState
+    {
+        Lobby,
+        RunPart,
+        BossPart
     }
 
 }
