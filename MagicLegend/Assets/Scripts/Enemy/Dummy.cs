@@ -18,7 +18,7 @@ public class Dummy : MonoBehaviour
         // Enemy Taking Damage Animation
         //Random Number for Punch Rotation
         Vector3 punchRotation = new Vector3(Random.Range(-20, 20), 0, Random.Range(-20, 20));
-        dummyParent.transform.DOPunchRotation(punchRotation, 0.7f, 10, 1).OnComplete(() => dummyParent.transform.DORotate(startRotation,1f));
+        dummyParent.transform.DOPunchRotation(punchRotation, 0.7f, 10, 1).OnComplete(() => dummyParent.transform.DORotate(startRotation,0.3f));
     }
 
     private void OnTriggerEnter(Collider other)

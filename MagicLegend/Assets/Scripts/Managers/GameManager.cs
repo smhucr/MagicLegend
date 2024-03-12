@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI fireRateCostText;
     public TextMeshProUGUI fireRateUpgradeToText;
     [Header("ElementLevel")]
-    public float elementLevel;
     public int currentElementLevel; // Use with PlayerPrefs
     public int elementLevelCost;
     public Button elementLevelButton;
@@ -49,7 +48,8 @@ public class GameManager : MonoBehaviour
     public GameObject dummy;
     [Header("VFX")]
     public int selectedElement;
-    public int[] elementLevels; //fire frost poison lightning
+    //0: Fire, 1: Frost, 2: Poison, 3: Lightning
+    public int[] elementLevels;
     public GameObject[] projectiles;
     public GameObject[] explosions;
     public GameObject[] sphereBlasts;
@@ -75,9 +75,14 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
+        elementLevels = new int[4];
         Application.targetFrameRate = 60;
         MakeInstance();
+        currentMoney = PlayerPrefs.GetInt("CurrentMoney");
+        currentMoneyText.text = "Essence: " + currentMoney.ToString();
+        //Assign Element Levels
         selectedElement = PlayerPrefs.GetInt("SelectedElement");
+
         if (selectedElement == 0)
             elementLevels[selectedElement] = PlayerPrefs.GetInt("FireElementLevel");
         else if (selectedElement == 1)
@@ -86,6 +91,68 @@ public class GameManager : MonoBehaviour
             elementLevels[selectedElement] = PlayerPrefs.GetInt("PoisonElementLevel");
         else if (selectedElement == 3)
             elementLevels[selectedElement] = PlayerPrefs.GetInt("LightningElementLevel");
+
+        elementLevelCost = PlayerPrefs.GetInt("ElementLevelCost" + selectedElement);
+        if (elementLevelCost == 0)
+        {
+            elementLevelCost = 100;
+            PlayerPrefs.SetInt("ElementLevelCost" + selectedElement, elementLevelCost);
+        }
+        elementLevelCostText.text = elementLevelCost.ToString();
+
+        currentElementLevel = GetCurrentElementLevel();
+        if (currentElementLevel == 0)
+        {
+            currentElementLevel = 1;
+            SetCurrentElementLevel(selectedElement, currentElementLevel);
+        }
+
+        if (elementLevels[selectedElement] >= 20)
+        {
+            elementLevelUpgradeToText.text = "Max Level";
+            elementLevelCostText.text = "Max Level";
+            elementLevelButton.interactable = false;
+        }
+        else
+        {
+            elementLevelUpgradeToText.text = "Upgrade to " + (elementLevels[selectedElement] + 1).ToString();
+            elementLevelCostText.text = elementLevelCost.ToString();
+        }
+        
+        //Assign FireRate
+        fireRateLevel = PlayerPrefs.GetInt("FireRateLevel");
+        fireRate = PlayerPrefs.GetFloat("FireRate");
+        if (fireRate == 0)
+        {
+            fireRate = 2.5f;
+            PlayerPrefs.SetFloat("FireRate", fireRate);
+        }
+        if (fireRateLevel == 0)
+        {
+            fireRateLevel = 1;
+            PlayerPrefs.SetInt("FireRateLevel", fireRateLevel);
+        }
+        fireRateCost = PlayerPrefs.GetInt("FireRateCost");
+        if (fireRateCost == 0)
+        {
+            fireRateCost = 100;
+            PlayerPrefs.SetInt("FireRateCost", fireRateCost);
+        }
+
+        if (fireRateLevel >= 20)
+        {
+            fireRateUpgradeToText.text = "Max Level";
+            fireRateCostText.text = "Max Level";
+            fireRateButton.interactable = false;
+        }
+        else
+        {
+            fireRateUpgradeToText.text = "Upgrade to " + (fireRateLevel + 1).ToString();
+            fireRateCostText.text = fireRateCost.ToString();
+        }
+
+
+        //Skill Prefabs
         SetSkillPrefabs();
         //DontDestroyOnLoad(gameObject);
     }
@@ -94,11 +161,8 @@ public class GameManager : MonoBehaviour
     {
         ChangeMergedAura(); // Changing Player's Aura
         StartCoroutine(TransitionChecker());
-        currentMoney = PlayerPrefs.GetInt("CurrentMoney");
-        currentMoneyText.text = "Essence: " + currentMoney.ToString();
 
-        currentElementLevel = GetCurrentElementLevel();
-
+        print("ElementLevelCost" + selectedElement);
 
     }
 
@@ -172,11 +236,19 @@ public class GameManager : MonoBehaviour
 
             fireRateCost = (int)(fireRateCost * 1.3f);
             fireRateCostText.text = fireRateCost.ToString();
-            fireRateUpgradeToText.text = "Upgrade to " + (fireRateLevel + 1).ToString();
+            fireRateUpgradeToText.text = "Upgrade to " + (fireRateLevel + 2).ToString();
             fireRateLevel++;
+            fireRate = fireRate - 0.1f;
             PlayerPrefs.SetInt("FireRateLevel", fireRateLevel);
             PlayerPrefs.SetInt("FireRateCost", fireRateCost);
-            fireRate = fireRate - 0.1f;
+            PlayerPrefs.SetFloat("FireRate", fireRate);
+
+        }
+        if (fireRateLevel >= 20)
+        {
+            fireRateUpgradeToText.text = "Max Level";
+            fireRateCostText.text = "Max Level";
+            fireRateButton.interactable = false;
         }
     }
 
@@ -198,23 +270,23 @@ public class GameManager : MonoBehaviour
                 currentMoney -= elementLevelCost;
                 currentMoneyText.text = "Essence: " + currentMoney.ToString();
                 PlayerPrefs.SetInt("CurrentMoney", currentMoney);
-
             }
-
+            if (elementLevelCost == 0)
+                elementLevelCost = 100;
             currentElementLevel++;
             elementLevelCost = (int)(elementLevelCost * 1.3f);
             elementLevelCostText.text = elementLevelCost.ToString();
-            elementLevelUpgradeToText.text = "Upgrade to " + elementLevel.ToString();
+            elementLevelUpgradeToText.text = "Upgrade to " + (currentElementLevel + 1).ToString();
             SetCurrentElementLevel(selectedElement, currentElementLevel);
+            PlayerPrefs.SetInt("ElementLevelCost" + selectedElement, elementLevelCost);
             PlayerPrefs.SetInt("ElementLevelCost", elementLevelCost);
-            elementLevel = elementLevel + 0.1f;
         }
-
-
-
-
-
-
+        if (currentElementLevel >= 20)
+        {
+            elementLevelUpgradeToText.text = "Max Level";
+            elementLevelCostText.text = "Max Level";
+            elementLevelButton.interactable = false;
+        }
     }
 
 
