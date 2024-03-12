@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using EasyTransition;
 using TMPro;
@@ -16,12 +17,28 @@ public class GameManager : MonoBehaviour
     public GameObject winGamePanel;
     [Header("Money")]
     public int currentMoney;
+    public int upgradeKitCount;
     public TextMeshProUGUI currentMoneyText;
+    public TextMeshProUGUI upgradeKitCountText;
+    [Header("FireRate")]
+    public float fireRate;
+    public int fireRateLevel;
+    public int fireRateCost;
+    public Button fireRateButton;
+    public TextMeshProUGUI fireRateCostText;
+    public TextMeshProUGUI fireRateUpgradeToText;
+    [Header("ElementLevel")]
+    public float elementLevel;
+    public int currentElementLevel; // Use with PlayerPrefs
+    public int elementLevelCost;
+    public Button elementLevelButton;
+    public TextMeshProUGUI elementLevelCostText;
+    public TextMeshProUGUI elementLevelUpgradeToText;
     [Header("Player")]
     public GameObject playerParent; // Moving Player
     public GameObject mainPlayer; // Player who has script features
     public int playerHealth;
-    public float playerDamageMultiplier;    
+    public float playerDamageMultiplier;
     [Header("Player Settings")]
     public float playerSpeed = 5f;
     public DynamicJoystick joystick;
@@ -32,10 +49,7 @@ public class GameManager : MonoBehaviour
     public GameObject dummy;
     [Header("VFX")]
     public int selectedElement;
-    public int fireElementLevel;
-    public int frostElementLevel;
-    public int posionElementLevel;
-    public int lightningElementLevel;
+    public int[] elementLevels; //fire frost poison lightning
     public GameObject[] projectiles;
     public GameObject[] explosions;
     public GameObject[] sphereBlasts;
@@ -48,8 +62,6 @@ public class GameManager : MonoBehaviour
     public AudioClip[] audioClips;
     [Header("Transition")]
     public TransitionSettings[] transitions;
-    [Header("FireRate")]
-    public float fireRate;
     [Header("ControlCheckers")]
     public bool isAvailableShoot;
     public bool startGame;
@@ -66,6 +78,14 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         MakeInstance();
         selectedElement = PlayerPrefs.GetInt("SelectedElement");
+        if (selectedElement == 0)
+            elementLevels[selectedElement] = PlayerPrefs.GetInt("FireElementLevel");
+        else if (selectedElement == 1)
+            elementLevels[selectedElement] = PlayerPrefs.GetInt("FrostElementLevel");
+        else if (selectedElement == 2)
+            elementLevels[selectedElement] = PlayerPrefs.GetInt("PoisonElementLevel");
+        else if (selectedElement == 3)
+            elementLevels[selectedElement] = PlayerPrefs.GetInt("LightningElementLevel");
         SetSkillPrefabs();
         //DontDestroyOnLoad(gameObject);
     }
@@ -76,11 +96,47 @@ public class GameManager : MonoBehaviour
         StartCoroutine(TransitionChecker());
         currentMoney = PlayerPrefs.GetInt("CurrentMoney");
         currentMoneyText.text = "Essence: " + currentMoney.ToString();
-        fireElementLevel = PlayerPrefs.GetInt("FireElementLevel");
-        frostElementLevel = PlayerPrefs.GetInt("FrostElementLevel");
-        posionElementLevel = PlayerPrefs.GetInt("PoisonElementLevel");
-        lightningElementLevel = PlayerPrefs.GetInt("LightningElementLevel");
+
+        currentElementLevel = GetCurrentElementLevel();
+
+
     }
+
+    public int GetCurrentElementLevel()
+    {
+        int currentElementLevel = elementLevels[selectedElement];
+
+        return currentElementLevel;
+    }
+
+    public void SetCurrentElementLevel(int selectedElement, int currentElementLevel)
+    {
+        if (selectedElement == 0)
+        {
+            PlayerPrefs.SetInt("FireElementLevel", currentElementLevel);
+            elementLevels[selectedElement] = PlayerPrefs.GetInt("FireElementLevel");
+
+        }
+        else if (selectedElement == 1)
+        {
+
+            PlayerPrefs.SetInt("FireElementLevel", currentElementLevel);
+            elementLevels[selectedElement] = PlayerPrefs.GetInt("FireElementLevel");
+        }
+        else if (selectedElement == 2)
+        {
+            PlayerPrefs.SetInt("PoisonElementLevel", currentElementLevel);
+            elementLevels[selectedElement] = PlayerPrefs.GetInt("PoisonElementLevel");
+
+        }
+        else if (selectedElement == 3)
+        {
+            PlayerPrefs.SetInt("LightningElementLevel", currentElementLevel);
+            elementLevels[selectedElement] = PlayerPrefs.GetInt("LightningElementLevel");
+        }
+
+    }
+
 
     public void StartGame()
     {
@@ -102,6 +158,66 @@ public class GameManager : MonoBehaviour
         startGame = false;
         gameOverPanel.SetActive(true);
     }
+
+    public void FireRateIncreaser()
+    {
+        //Increase FireRate with essence and max 20 level
+        if (fireRateLevel < 20 && currentMoney >= fireRateCost)
+        {
+
+            currentMoney -= fireRateCost;
+            currentMoneyText.text = "Essence: " + currentMoney.ToString();
+            PlayerPrefs.SetInt("CurrentMoney", currentMoney);
+
+
+            fireRateCost = (int)(fireRateCost * 1.3f);
+            fireRateCostText.text = fireRateCost.ToString();
+            fireRateUpgradeToText.text = "Upgrade to " + (fireRateLevel + 1).ToString();
+            fireRateLevel++;
+            PlayerPrefs.SetInt("FireRateLevel", fireRateLevel);
+            PlayerPrefs.SetInt("FireRateCost", fireRateCost);
+            fireRate = fireRate - 0.1f;
+        }
+    }
+
+    public void ElementLevelIncreaser()
+    {
+
+        //Increase element level with upgrade kit and max 20 level
+        if (currentElementLevel < 20 && currentMoney >= elementLevelCost)
+        {
+            if (upgradeKitCount > 0)
+            {
+                upgradeKitCount--;
+                upgradeKitCountText.text = upgradeKitCount.ToString();
+                PlayerPrefs.SetInt("UpgradeKitCount", upgradeKitCount);
+            }
+            else
+            {
+                //current money minus and change money text
+                currentMoney -= elementLevelCost;
+                currentMoneyText.text = "Essence: " + currentMoney.ToString();
+                PlayerPrefs.SetInt("CurrentMoney", currentMoney);
+
+            }
+
+            currentElementLevel++;
+            elementLevelCost = (int)(elementLevelCost * 1.3f);
+            elementLevelCostText.text = elementLevelCost.ToString();
+            elementLevelUpgradeToText.text = "Upgrade to " + elementLevel.ToString();
+            SetCurrentElementLevel(selectedElement, currentElementLevel);
+            PlayerPrefs.SetInt("ElementLevelCost", elementLevelCost);
+            elementLevel = elementLevel + 0.1f;
+        }
+
+
+
+
+
+
+    }
+
+
 
     public void SetSkillPrefabs()
     {
