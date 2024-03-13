@@ -21,6 +21,9 @@ public class Dummy : MonoBehaviour
         dummyParent.transform.DOPunchRotation(punchRotation, 0.7f, 10, 1).OnComplete(() => dummyParent.transform.DORotate(startRotation,0.3f));
     }
 
+
+   
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bullet"))
