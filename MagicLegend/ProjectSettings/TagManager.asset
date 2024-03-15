@@ -9,6 +9,8 @@ TagManager:
   - Dummy
   - Bullet
   - Rain
+  - Essence
+  - Treasure
   layers:
   - Default
   - TransparentFX

@@ -256,15 +256,29 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(true);
     }
 
+
+    public void MoneyIncrease(int incomeValue)
+    {
+        currentMoney += incomeValue;
+        currentMoneyText.text = "Essence: " + currentMoney.ToString();
+        PlayerPrefs.SetInt("CurrentMoney", currentMoney);
+    }
+
+    //money decrease
+    public void MoneyDecrease(int decreaseValue)
+    {
+        currentMoney -= decreaseValue;
+        currentMoneyText.text = "Essence: " + currentMoney.ToString();
+        PlayerPrefs.SetInt("CurrentMoney", currentMoney);
+    }
+
     public void FireRateIncreaser()
     {
         //Increase FireRate with essence and max 20 level
         if (fireRateLevel < 20 && currentMoney >= fireRateCost)
         {
-
-            currentMoney -= fireRateCost;
-            currentMoneyText.text = "Essence: " + currentMoney.ToString();
-            PlayerPrefs.SetInt("CurrentMoney", currentMoney);
+            //current money minus and change money text
+            MoneyDecrease(fireRateCost);
 
 
             fireRateCost = (int)(fireRateCost * 1.3f);
@@ -300,9 +314,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 //current money minus and change money text
-                currentMoney -= elementLevelCost;
-                currentMoneyText.text = "Essence: " + currentMoney.ToString();
-                PlayerPrefs.SetInt("CurrentMoney", currentMoney);
+                MoneyDecrease(elementLevelCost);
             }
             if (elementLevelCost == 0)
                 elementLevelCost = 100;
