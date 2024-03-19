@@ -11,6 +11,9 @@ TagManager:
   - Rain
   - Essence
   - Treasure
+  - Item
+  - Hearth
+  - UpgradeKit
   layers:
   - Default
   - TransparentFX
