@@ -272,6 +272,36 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("CurrentMoney", currentMoney);
     }
 
+    //upgrade kit increase
+    public void UpgradeKitIncrease(int incomeValue)
+    {
+        upgradeKitCount += incomeValue;
+        //upgradeKitCountText.text = upgradeKitCount.ToString();
+        PlayerPrefs.SetInt("UpgradeKitCount", upgradeKitCount);
+    }
+
+    //upgrade kit decrease
+    public void UpgradeKitDecrease(int decreaseValue)
+    {
+        upgradeKitCount -= decreaseValue;
+        //upgradeKitCountText.text = upgradeKitCount.ToString();
+        PlayerPrefs.SetInt("UpgradeKitCount", upgradeKitCount);
+    }
+
+    //increase health
+    public void HearthIncrease(int incomeValue)
+    {
+        playerHealth += incomeValue;
+        playerHealth = Mathf.Clamp(playerHealth, 0, 2);
+
+    }
+    //decrease health
+    public void HearthDecrease(int decreaseValue)
+    {
+        playerHealth -= decreaseValue;
+        playerHealth = Mathf.Clamp(playerHealth, 0, 2);
+    }
+
     public void FireRateIncreaser()
     {
         //Increase FireRate with essence and max 20 level
@@ -307,9 +337,7 @@ public class GameManager : MonoBehaviour
         {
             if (upgradeKitCount > 0)
             {
-                upgradeKitCount--;
-                upgradeKitCountText.text = upgradeKitCount.ToString();
-                PlayerPrefs.SetInt("UpgradeKitCount", upgradeKitCount);
+                UpgradeKitDecrease(1);
             }
             else
             {

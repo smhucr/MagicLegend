@@ -22,7 +22,30 @@ public class GatherTrigger : MonoBehaviour
         }
         else if (other.CompareTag("Treasure"))
         {
-            // print("Gathered Treasure");
+            print("Gathered Treasure");
+            if (Random.Range(0, 20) == 5)
+            {
+                gameManager.MoneyIncrease(Random.Range(50, 250));
+            }
+            else
+            {
+                gameManager.UpgradeKitIncrease(1);
+            }   
+            other.gameObject.SetActive(false);
+
         }
+        else if (other.CompareTag("UpgradeKit"))
+        {
+            print("Gathered Upgrade Kit");
+            gameManager.UpgradeKitIncrease(1);
+            other.gameObject.SetActive(false);
+        }
+        else if (other.CompareTag("Hearth"))
+        {
+            print("Gathered Hearth");
+            gameManager.HearthIncrease(1);
+            other.gameObject.SetActive(false);
+        }
+
     }
 }
