@@ -23,7 +23,7 @@ public class GatherTrigger : MonoBehaviour
         else if (other.CompareTag("Treasure"))
         {
             print("Gathered Treasure");
-            if (Random.Range(0, 20) == 5)
+            if (Random.Range(0, 20) != 5)
             {
                 gameManager.MoneyIncrease(Random.Range(50, 250));
             }

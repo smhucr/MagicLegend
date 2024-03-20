@@ -29,6 +29,7 @@ public class Dummy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             TakingDamage();
+            other.gameObject.SetActive(false);
         }
     }
 }

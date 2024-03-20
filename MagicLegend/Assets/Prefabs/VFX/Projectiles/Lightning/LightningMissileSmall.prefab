@@ -4906,8 +4906,8 @@ GameObject:
   - component: {fileID: 6995672536078303374}
   - component: {fileID: 19920094}
   - component: {fileID: 19889278}
-  - component: {fileID: 2416234923662444649}
   - component: {fileID: 1076166171653876616}
+  - component: {fileID: 2871021392115218435}
   m_Layer: 0
   m_Name: LightningMissileSmall
   m_TagString: Bullet
@@ -9639,19 +9639,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!65 &2416234923662444649
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100004}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.3369997, y: 3.3369997, z: 3.3369997}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1076166171653876616
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9668,6 +9655,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &2871021392115218435
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: -0.25}
 --- !u!1 &100006
 GameObject:
   m_ObjectHideFlags: 0
