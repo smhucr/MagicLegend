@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviour
         MakeInstance();
         currentMoney = PlayerPrefs.GetInt("CurrentMoney");
         currentMoneyText.text = "Essence: " + currentMoney.ToString();
+        upgradeKitCount = PlayerPrefs.GetInt("UpgradeKitCount");
+        upgradeKitCountText.text = "Upgrade Kit: " + upgradeKitCount.ToString();
         //Assign Element Levels
         selectedElement = PlayerPrefs.GetInt("SelectedElement");
 
@@ -276,7 +278,8 @@ public class GameManager : MonoBehaviour
     public void UpgradeKitIncrease(int incomeValue)
     {
         upgradeKitCount += incomeValue;
-        //upgradeKitCountText.text = upgradeKitCount.ToString();
+        if (upgradeKitCountText != null)
+            upgradeKitCountText.text = "Upgrade Kit: " + upgradeKitCount.ToString();
         PlayerPrefs.SetInt("UpgradeKitCount", upgradeKitCount);
     }
 
@@ -284,7 +287,8 @@ public class GameManager : MonoBehaviour
     public void UpgradeKitDecrease(int decreaseValue)
     {
         upgradeKitCount -= decreaseValue;
-        //upgradeKitCountText.text = upgradeKitCount.ToString();
+        if (upgradeKitCountText != null)
+            upgradeKitCountText.text = "Upgrade Kit: " + upgradeKitCount.ToString();
         PlayerPrefs.SetInt("UpgradeKitCount", upgradeKitCount);
     }
 
@@ -292,6 +296,7 @@ public class GameManager : MonoBehaviour
     public void HearthIncrease(int incomeValue)
     {
         playerHealth += incomeValue;
+        mainPlayer.GetComponent<MainPlayer>().health = playerHealth;
         playerHealth = Mathf.Clamp(playerHealth, 0, 2);
 
     }
@@ -299,6 +304,7 @@ public class GameManager : MonoBehaviour
     public void HearthDecrease(int decreaseValue)
     {
         playerHealth -= decreaseValue;
+        mainPlayer.GetComponent<MainPlayer>().health = playerHealth;
         playerHealth = Mathf.Clamp(playerHealth, 0, 2);
     }
 
