@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RunPart.unity
     guid: 2aec4eab8539fed43ae768b3a488b5aa
+  - enabled: 1
+    path: Assets/Scenes/BossArea.unity
+    guid: dfbdf41916763d84cb0a498975d5d59e
   - enabled: 0
     path: Assets/_OutSourceAssets/MagicArsenal/Demo/Scenes/magic_aura.unity
     guid: 27f678a331798d34887cc39800f31171

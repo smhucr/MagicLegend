@@ -9,7 +9,8 @@ public class MainPlayer : Player
     {
         gameManager = GameManager.instance;
 
-        health = gameManager.playerHealth;
+        gameManager.playerHealth = health;
+        maxHealth = health + 1;
         damageMultiplier = gameManager.playerDamageMultiplier;
     }
 }

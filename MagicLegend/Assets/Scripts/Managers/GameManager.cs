@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("Manager")]
     public static GameManager instance;
     public ObjectsPool objectPool;
+    public HealthManager healthManager;
     [Header("LevelState")]
     public SceneState currentSceneState;
     [Header("UI")]
@@ -295,10 +296,10 @@ public class GameManager : MonoBehaviour
     //increase health
     public void HearthIncrease(int incomeValue)
     {
-        playerHealth += incomeValue;
-        mainPlayer.GetComponent<MainPlayer>().health = playerHealth;
-        playerHealth = Mathf.Clamp(playerHealth, 0, 2);
-
+        MainPlayer cachedMainPlayer = mainPlayer.GetComponent<MainPlayer>();
+        cachedMainPlayer.health += incomeValue;
+        cachedMainPlayer.health = Mathf.Clamp(cachedMainPlayer.health, 0, 3);
+        playerHealth = cachedMainPlayer.health;
     }
     //decrease health
     public void HearthDecrease(int decreaseValue)
@@ -403,6 +404,11 @@ public class GameManager : MonoBehaviour
     public void RestartRunPart()
     {
         TransitionManager.Instance().Transition("RunPart", transitions[0], 0.5f);
+    }
+
+    public void StartBossPart()
+    {
+        TransitionManager.Instance().Transition("BossArea", transitions[0], 0.5f);
     }
 
 

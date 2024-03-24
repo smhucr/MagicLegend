@@ -8,6 +8,8 @@ public abstract class Player : MonoBehaviour
     [SerializeField]
     public int health;
     [SerializeField]
+    public int maxHealth;
+    [SerializeField]
     public float damageMultiplier;
 
     public void TakeDamage(int damageValue)

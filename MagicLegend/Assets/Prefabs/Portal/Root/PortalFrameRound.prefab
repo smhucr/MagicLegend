@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2859153066343295709}
   m_Layer: 0
-  m_Name: PortalRound
+  m_Name: PortalFrameRound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7974407532015925264}
   - {fileID: 7974407531086482053}
@@ -44,6 +45,10 @@ PrefabInstance:
       value: MagicPortalRoundSt03
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5b2aad18847069d48b281d3f5b900fd8, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 5b2aad18847069d48b281d3f5b900fd8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -56,6 +61,10 @@ PrefabInstance:
       value: -0.0019999892
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5b2aad18847069d48b281d3f5b900fd8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000029504295
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 5b2aad18847069d48b281d3f5b900fd8, type: 3}
       propertyPath: m_LocalRotation.x
       value: 6.261657e-14
       objectReference: {fileID: 0}
@@ -66,14 +75,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 5b2aad18847069d48b281d3f5b900fd8, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.0000000218557
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5b2aad18847069d48b281d3f5b900fd8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.0000029504295
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5b2aad18847069d48b281d3f5b900fd8, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5b2aad18847069d48b281d3f5b900fd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -111,6 +112,10 @@ PrefabInstance:
       value: MagicPortalRound03
       objectReference: {fileID: 0}
     - target: {fileID: 400020, guid: 8d2d3d3e8ba81d34c9f495d5735a5fde, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400020, guid: 8d2d3d3e8ba81d34c9f495d5735a5fde, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -123,6 +128,10 @@ PrefabInstance:
       value: -0.00999999
       objectReference: {fileID: 0}
     - target: {fileID: 400020, guid: 8d2d3d3e8ba81d34c9f495d5735a5fde, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400020, guid: 8d2d3d3e8ba81d34c9f495d5735a5fde, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.00000004371139
       objectReference: {fileID: 0}
@@ -133,14 +142,6 @@ PrefabInstance:
     - target: {fileID: 400020, guid: 8d2d3d3e8ba81d34c9f495d5735a5fde, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400020, guid: 8d2d3d3e8ba81d34c9f495d5735a5fde, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400020, guid: 8d2d3d3e8ba81d34c9f495d5735a5fde, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400020, guid: 8d2d3d3e8ba81d34c9f495d5735a5fde, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -33,5 +33,13 @@ public class ObstacleTrigger : MonoBehaviour
             if (gameManager.playerHealth == 0)
                 gameManager.GameOver();
         }
+        else if (other.CompareTag("Teleport"))
+        {
+            print("Collision with Teleport");
+            gameManager.StartBossPart();
+            gameManager.isGameOver = true;
+            gameManager.DisableMoveable(0.2f);
+            
+        }
     }
 }
