@@ -33,30 +33,37 @@ public class AgressiveEnemy : MainEnemy
         distance = Vector3.Distance(transform.position, playerFollowObject.position);
         if (distance > follow_distance)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerFollowObject.position.x,transform.position.y,playerFollowObject.position.z), moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerFollowObject.position.x, transform.position.y, playerFollowObject.position.z), moveSpeed * Time.deltaTime);
         }
         else
         {
             enemyCurrentState = EnemyState.Attack;
         }
-        
-            
+
+
     }
 
     public override void Attack()
     {
-        print("I am attacking");
+
         if (isAttackable)
         {
-            //Enemy Attack Animation
-            playerComponentObject.GetComponent<MainPlayer>().TakeDamage(damageValue);
             distance = Vector3.Distance(transform.position, playerFollowObject.position);
             if (distance > follow_distance)
             {
-                enemyCurrentState = EnemyState.Chase;
-            }
+                enemyCurrentState = EnemyState.Idle;
 
-            StartCoroutine(AttackCooldown());
+            }
+            else
+            {
+                print("I am attacking");
+                //Enemy Attack Animation
+                playerComponentObject.GetComponent<MainPlayer>().TakeDamage(damageValue);
+
+                isAttackable = false;
+                StartCoroutine(AttackCooldown());
+
+            }
         }
     }
 
@@ -65,6 +72,6 @@ public class AgressiveEnemy : MainEnemy
         print("I am dying");
         //Enemy Die Animation After Die Animation Destroy the Object    
 
-
     }
+
 }

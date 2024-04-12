@@ -300,13 +300,16 @@ public class GameManager : MonoBehaviour
         cachedMainPlayer.health += incomeValue;
         cachedMainPlayer.health = Mathf.Clamp(cachedMainPlayer.health, 0, 3);
         playerHealth = cachedMainPlayer.health;
+        healthManager.InstantiateHearths();
     }
     //decrease health
     public void HearthDecrease(int decreaseValue)
     {
-        playerHealth -= decreaseValue;
-        mainPlayer.GetComponent<MainPlayer>().health = playerHealth;
-        playerHealth = Mathf.Clamp(playerHealth, 0, 2);
+        MainPlayer cachedMainPlayer = mainPlayer.GetComponent<MainPlayer>();
+        cachedMainPlayer.health -= decreaseValue;
+        cachedMainPlayer.health = Mathf.Clamp(cachedMainPlayer.health, 0, 3);
+        playerHealth = cachedMainPlayer.health;
+        healthManager.InstantiateHearths();
     }
 
     public void FireRateIncreaser()

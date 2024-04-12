@@ -45,7 +45,6 @@ public class GatherTrigger : MonoBehaviour
             print("Gathered Hearth");
             gameManager.HearthIncrease(1);
             other.gameObject.SetActive(false);
-            gameManager.healthManager.InstantiateHearths();
         }
 
     }

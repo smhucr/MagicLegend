@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] public ObjectsPool objectPool = null;
-
+    //Manager
+    public GameManager gameManager;
     // SpawnPoint
     public Transform bulletPoint;
     // Player
@@ -14,7 +15,8 @@ public class Shooting : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.isAvailableShoot = true;
+        gameManager = GameManager.instance;
+        gameManager.isAvailableShoot = true;
         StartCoroutine(Shoot(0));
     }
 
@@ -26,7 +28,7 @@ public class Shooting : MonoBehaviour
     public IEnumerator Shoot(int objectType)
     {
         //Spawn New Object
-        if (GameManager.instance.isAvailableShoot && GameManager.instance.startGame)
+        if (gameManager.isAvailableShoot && gameManager.startGame && !gameManager.isGameOver)
         {
             var obj = objectPool.GetPooledObject(objectType);
             obj.transform.rotation = bulletPoint.rotation;

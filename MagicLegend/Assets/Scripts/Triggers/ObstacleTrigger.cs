@@ -22,14 +22,14 @@ public class ObstacleTrigger : MonoBehaviour
         else if (other.CompareTag("SpinnedSpike"))
         {
             print("Collision with SpinnedSpike");
-            gameManager.playerHealth -= 1;
+            gameManager.HearthDecrease(1);
             if (gameManager.playerHealth == 0)
                 gameManager.GameOver();
         }
         else if (other.CompareTag("Spike"))
         {
             print("Collision with Spike");
-            gameManager.playerHealth -= 1;
+            gameManager.HearthDecrease(1);
             if (gameManager.playerHealth == 0)
                 gameManager.GameOver();
         }

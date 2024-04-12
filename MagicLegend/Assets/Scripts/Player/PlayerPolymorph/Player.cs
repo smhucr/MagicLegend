@@ -14,8 +14,7 @@ public abstract class Player : MonoBehaviour
 
     public void TakeDamage(int damageValue)
     {
-        health -= damageValue;
-        health = Mathf.Clamp(health, 0, 10);
+        GameManager.instance.HearthDecrease(damageValue);
         if (health <= 0)
             Die();
     }
@@ -23,6 +22,7 @@ public abstract class Player : MonoBehaviour
     public void Die()
     {
         print("I'm Dead Bruah");
+        GameManager.instance.GameOver();
     }
 
     public void Reborn()
