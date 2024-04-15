@@ -40,5 +40,12 @@ public class ObjectsPool : MonoBehaviour
         pools[objectType].pooledObjects.Enqueue(obj);
         return obj;
     }
+
+    public GameObject GetPooledObjectForLevel(int objectType)
+    {
+        GameObject obj = pools[objectType].pooledObjects.Dequeue();
+        pools[objectType].pooledObjects.Enqueue(obj);
+        return obj;
+    }
 }
 

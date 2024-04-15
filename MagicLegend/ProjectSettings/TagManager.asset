@@ -16,8 +16,8 @@ TagManager:
   - UpgradeKit
   - Wall
   - SpinnedSpike
-  - Spike
   - Teleport
+  - FlameThrower
   layers:
   - Default
   - TransparentFX
