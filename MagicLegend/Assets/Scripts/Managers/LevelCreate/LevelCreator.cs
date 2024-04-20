@@ -12,49 +12,75 @@ public class LevelCreator : MonoBehaviour
     [Header("ObstaclesTransforms")]
     public Transform[] obstaclesTransforms;
 
+    private List<GameObject> gatherables = new List<GameObject>();
+    private List<GameObject> obstacles = new List<GameObject>();
+    private List<Transform> gatherablesLocations = new List<Transform>();
+    private List<Transform> obstaclesLocations = new List<Transform>();
 
-    private ArrayList gatherables = new ArrayList();
-    private ArrayList obstacles = new ArrayList();
-    private ArrayList gatherablesTransformsList = new ArrayList();
-    //private ArrayList obstaclesTransformsList = new ArrayList();
-    public int[] occupiedObstaclesLocations;
-    //GatherableMaterials --- Element 5 To Element 8
-    //Obstacles --- Element 9 To Element 12
     private void Start()
     {
-
-        //Get Gatherables
+        // Gatherables'larý al
         for (int i = 5; i < 9; i++)
         {
             for (int j = 0; j < objectsPool.pools[i].poolSize; j++)
             {
-
                 gatherables.Add(objectsPool.GetPooledObjectForLevel(i));
             }
         }
-        //Get Obstacles
+
+        // Obstacles'larý al ve etkinleþtir
         for (int i = 9; i < 13; i++)
         {
             for (int j = 0; j < objectsPool.pools[i].poolSize; j++)
             {
-                obstacles.Add(objectsPool.GetPooledObjectForLevel(i));
+                GameObject obstacle = objectsPool.GetPooledObjectForLevel(i);
+                obstacles.Add(obstacle);
             }
         }
-
+        // Locations' larý al
         for (int i = 0; i < gatherablesTransforms.Length; i++)
         {
-            gatherablesTransformsList.Add(gatherablesTransforms[i]);
+            gatherablesLocations.Add(gatherablesTransforms[i]);
         }
 
-        /*for (int i = 0; i < obstaclesTransforms.Length; i++)
+        for (int i = 0; i < obstaclesTransforms.Length; i++)
         {
-            obstaclesTransformsList.Add(obstaclesTransforms[i]);
-        }*/
-        occupiedObstaclesLocations = new int[obstaclesTransforms.Length];
-        CreateGatherables();
-        CreateObstacles();
-    }
+            obstaclesLocations.Add(obstaclesTransforms[i]);
+        }
 
+        // Gatherables'larý rastgele konumlara yerleþtir
+        for (int i = 0; i < gatherablesTransforms.Length; i++)
+        {
+            if (gatherables.Count < 1)
+            {
+                break;
+            }
+            GameObject currentGatherable = gatherables[Random.Range(0, gatherables.Count)];
+            currentGatherable.SetActive(true);
+            Transform randomTransform = gatherablesLocations[Random.Range(0, gatherablesLocations.Count)];
+            currentGatherable.transform.position = randomTransform.position;
+            gatherablesLocations.Remove(randomTransform);
+            gatherables.Remove(currentGatherable);
+        }
+
+        // Obstacles'larý rastgele konumlara yerleþtir
+        for (int i = 0; i < obstaclesTransforms.Length; i++)
+        {
+            if (obstacles.Count < 1)
+            {
+                break;
+            }
+            GameObject currentObstacle = obstacles[Random.Range(0, obstacles.Count)];
+            currentObstacle.SetActive(true);
+            Transform randomTransform = obstaclesLocations[Random.Range(0, obstaclesLocations.Count)];
+            currentObstacle.transform.position = randomTransform.position;
+            currentObstacle.transform.SetParent(randomTransform.transform);
+            obstaclesLocations.Remove(randomTransform);
+            obstacles.Remove(currentObstacle);
+        }
+
+    }
+    /*
     private void CreateGatherables()
     {
         int tempCountOfGatherables = gatherables.Count;
@@ -77,27 +103,38 @@ public class LevelCreator : MonoBehaviour
         }
     }
 
+    //First Select Obstacle and Location
+    //Then Check if the location is available
+    //If not available select another location
+    //If tryCounter is greater than 50, break the loop
+    //If tryCounter is greater than 50, continue the loop
+    //If location is available, place the obstacle
+    //Discard from List obstacle and location for Obstacles
+
+
     private void CreateObstacles()
     {
         int tempCountOfObstacles = obstacles.Count;
-        for (int i = 0; i < tempCountOfObstacles && i < obstaclesTransforms.Length; i++)
+        for (int i = 0; i < tempCountOfObstacles; i++)
         {
             //Select Random Obstacle and Location
-            int selectedObstacle = Random.Range(0, obstacles.Count);
-            int selectedLocation = Random.Range(0, occupiedObstaclesLocations.Length);
-            while (occupiedObstaclesLocations[selectedLocation] != 0)
+            int selectedObstacle = Random.Range(0, obstacles.Count - i);
+            int selectedLocation = Random.Range(0, obstaclesTransformsList.Count);
+            while (occupiedObstaclesLocations[selectedLocation] != 1)
             {
-                selectedLocation = Random.Range(0, occupiedObstaclesLocations.Length);
+                selectedLocation = Random.Range(0, obstaclesTransformsList.Count);
             }
             GameObject currentObstacleGameobject = (GameObject)obstacles[selectedObstacle];
 
             if (currentObstacleGameobject.CompareTag("SpinnedSpike"))
             {
-                int tempSelectedLocation = selectedLocation;
                 currentObstacleGameobject.SetActive(true);
+                tryCounter = 0;
 
+                int tempSelectedLocation;
                 while (true)
                 {
+                    tempSelectedLocation = selectedLocation;
                     while (true)
                     {
                         if (tempSelectedLocation % 3 == 0)
@@ -110,100 +147,38 @@ public class LevelCreator : MonoBehaviour
                     {
                         break;
                     }
+                    else if (tryCounter > 50)
+                    {
+                        break;
+
+                    }
                     else
                     {
-                        selectedLocation = Random.Range(0, occupiedObstaclesLocations.Length);
+                        selectedLocation = Random.Range(0, obstaclesTransformsList.Count);
                     }
+                    tryCounter++;
                 }
-
-                tempSelectedLocation = selectedLocation;
-                if (tempSelectedLocation % 3 == 0)
+                if (tryCounter > 50)
                 {
-                    selectedLocation = tempSelectedLocation;
-                    for (int j = 0; j < 3; j++)
-                    {
-                        occupiedObstaclesLocations[selectedLocation + j] = 1;
-
-                    }
-                    obstacles.RemoveAt(selectedObstacle);
+                    continue;
                 }
-                else
+
+                selectedLocation = tempSelectedLocation;
+                for (int j = 0; j < 3; j++)
                 {
-                    while (true)
+                    if (selectedLocation + j >= occupiedObstaclesLocations.Length)
                     {
-                        if (tempSelectedLocation % 3 == 0)
-                        {
-                            selectedLocation = tempSelectedLocation;
-                            break;
-                        }
-                        tempSelectedLocation--;
+                        break;
                     }
-                    for (int j = 0; j < 3; j++)
-                    {
-                        occupiedObstaclesLocations[selectedLocation + j] = 1;
-
-                    }
-                    obstacles.RemoveAt(selectedObstacle);
+                    print(selectedLocation + j);
+                    occupiedObstaclesLocations[selectedLocation + j] = 1;
                 }
-                //currentObstacleGameobject.transform.position = ((Transform)obstaclesTransformsList[selectedLocation]).position;
+                obstacles.RemoveAt(selectedObstacle);
                 currentObstacleGameobject.transform.transform.position = obstaclesTransforms[selectedLocation].position + new Vector3(0, 2.64f, 0);
             }
             else if (currentObstacleGameobject.CompareTag("FlameThrower"))
             {
-                currentObstacleGameobject.SetActive(true);
-                int tempSelectedLocation = selectedLocation;
-
-                while (tempSelectedLocation > 0)
-                {
-                    if (tempSelectedLocation % 3 == 0)
-                    {
-                        break;
-                    }
-                    tempSelectedLocation--;
-                    print(tempSelectedLocation);
-                    if (tempSelectedLocation < 0)
-                        break;
-                }
-
-                while (true)
-                {
-                    int countOfObstacles = 0;
-                    for (int j = 0; j < 3; j++)
-                    {
-                        if (occupiedObstaclesLocations[tempSelectedLocation + j] == 1)
-                        {
-                            countOfObstacles++;
-                        }
-                    }
-                    if (countOfObstacles >= 2)
-                    {
-                        selectedLocation = Random.Range(0, occupiedObstaclesLocations.Length);
-                        tempSelectedLocation = selectedLocation;
-                        while (tempSelectedLocation > 0)
-                        {
-                            if (tempSelectedLocation % 3 == 0)
-                            {
-                                break;
-                            }
-                            tempSelectedLocation--;
-                            print(tempSelectedLocation);
-                            if (tempSelectedLocation < 0)
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        break;
-                    }
-
-
-                }
-
-                for (int j = 0; j < 3; j++)
-                    occupiedObstaclesLocations[selectedLocation] = 1; // BROKEN CODE
                 obstacles.RemoveAt(selectedObstacle);
-
-                currentObstacleGameobject.transform.position = obstaclesTransforms[selectedLocation].position;
             }
             else if (currentObstacleGameobject.CompareTag("Wall"))
             {
@@ -220,6 +195,6 @@ public class LevelCreator : MonoBehaviour
             }
 
         }
-    }
+    }*/
 
 }
