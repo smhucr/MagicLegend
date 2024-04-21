@@ -38,10 +38,10 @@ public class LevelContains : MonoBehaviour
         }
 
         //Obstacles --- Element 9 To Element 12
-        walls = Random.Range(1, 3); // Element 9
-        spinningSpikes = Random.Range(5, 13); // Element 10
-        flameThrower = Random.Range(10, 15); // Element 11
-        enemyCount = Random.Range(3, 8); // Agressive Enemy Element 12
+        walls = Random.Range(3, 4); // Element 9
+        spinningSpikes = Random.Range(1, 3); // Element 10
+        flameThrower = Random.Range(2, 5); // Element 11
+        enemyCount = Random.Range(2, 3); // Agressive Enemy Element 12
     
         objectsPool.pools[5].poolSize = hearths;
         objectsPool.pools[6].poolSize = treasures;

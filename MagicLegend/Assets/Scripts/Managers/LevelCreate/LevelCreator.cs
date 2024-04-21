@@ -75,6 +75,8 @@ public class LevelCreator : MonoBehaviour
             Transform randomTransform = obstaclesLocations[Random.Range(0, obstaclesLocations.Count)];
             currentObstacle.transform.position = randomTransform.position;
             currentObstacle.transform.SetParent(randomTransform.transform);
+
+            print(int.Parse(randomTransform.name.Filter(false, true, false, false, false)));
             obstaclesLocations.Remove(randomTransform);
             obstacles.Remove(currentObstacle);
         }
