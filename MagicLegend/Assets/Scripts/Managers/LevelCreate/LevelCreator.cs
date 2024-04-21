@@ -29,7 +29,8 @@ public class LevelCreator : MonoBehaviour
         }
 
         // Obstacles'larý al ve etkinleþtir
-        for (int i = 9; i < 13; i++)
+        //Except for SpinningSpikes
+        for (int i = 10; i < 13; i++)
         {
             for (int j = 0; j < objectsPool.pools[i].poolSize; j++)
             {
@@ -62,7 +63,36 @@ public class LevelCreator : MonoBehaviour
             gatherablesLocations.Remove(randomTransform);
             gatherables.Remove(currentGatherable);
         }
+        // SpininngSpikes'larý rastgele konumlara yerleþtir
+        for (int p = 0; p < objectsPool.pools[9].poolSize; p++)
+        {
+            GameObject obstacle = objectsPool.GetPooledObjectForLevel(9);
+            obstacle.SetActive(true);
+            Transform randomTransform = obstaclesLocations[Random.Range(0, obstaclesLocations.Count)];
+            int tempSelectedLocation = int.Parse(randomTransform.name.Filter(false, true, false, false, false));
 
+            while (true)
+            {
+                if (tempSelectedLocation % 3 == 0)
+                {
+                    break;
+                }
+                print(tempSelectedLocation);
+                tempSelectedLocation--;
+            }
+            //if (obstaclesLocations.Contains(obstaclesTransforms[tempSelectedLocation]))
+            obstaclesLocations.Remove(obstaclesTransforms[tempSelectedLocation]);
+            //if (obstaclesLocations.Contains(obstaclesTransforms[tempSelectedLocation + 1]))
+            obstaclesLocations.Remove(obstaclesTransforms[tempSelectedLocation + 1]);
+            //if (obstaclesLocations.Contains(obstaclesTransforms[tempSelectedLocation + 2]))
+            obstaclesLocations.Remove(obstaclesTransforms[tempSelectedLocation + 2]);
+
+
+
+            obstacle.transform.position = obstaclesTransforms[tempSelectedLocation].position;
+            obstacle.transform.SetParent(obstaclesTransforms[tempSelectedLocation].transform);
+
+        }
         // Obstacles'larý rastgele konumlara yerleþtir
         for (int i = 0; i < obstaclesTransforms.Length; i++)
         {
@@ -70,15 +100,40 @@ public class LevelCreator : MonoBehaviour
             {
                 break;
             }
+            if (obstaclesLocations.Count < 1)
+            {
+                break;
+            }
             GameObject currentObstacle = obstacles[Random.Range(0, obstacles.Count)];
             currentObstacle.SetActive(true);
+
             Transform randomTransform = obstaclesLocations[Random.Range(0, obstaclesLocations.Count)];
             currentObstacle.transform.position = randomTransform.position;
             currentObstacle.transform.SetParent(randomTransform.transform);
 
-            print(int.Parse(randomTransform.name.Filter(false, true, false, false, false)));
+            //print(int.Parse(randomTransform.name.Filter(false, true, false, false, false)));
             obstaclesLocations.Remove(randomTransform);
             obstacles.Remove(currentObstacle);
+            for (int k = 0; k < obstaclesTransforms.Length; k += 3)
+            {
+                int occupiedCount = 0;
+                for (int j = 0; j < 3; j++)
+                {
+                    if (obstaclesTransforms[k + j].childCount == 1)
+                    {
+                        occupiedCount++;
+                    }
+                    if (occupiedCount >= 2)
+                    {
+                        if (obstaclesLocations.Contains(obstaclesTransforms[k]))
+                            obstaclesLocations.Remove(obstaclesTransforms[k]);
+                        if (obstaclesLocations.Contains(obstaclesTransforms[k + 1]))
+                            obstaclesLocations.Remove(obstaclesTransforms[k + 1]);
+                        if (obstaclesLocations.Contains(obstaclesTransforms[k + 2]))
+                            obstaclesLocations.Remove(obstaclesTransforms[k + 2]);
+                    }
+                }
+            }
         }
 
     }
