@@ -26,7 +26,7 @@ public class ObstacleTrigger : MonoBehaviour
             if (gameManager.playerHealth == 0)
                 gameManager.GameOver();
         }
-        else if (other.CompareTag("Spike"))
+        else if (other.CompareTag("FlameThrower"))
         {
             print("Collision with Spike");
             gameManager.HearthDecrease(1);

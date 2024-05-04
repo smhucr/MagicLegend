@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7682833010362661909}
   - component: {fileID: 6715215038317114288}
   - component: {fileID: 8851204076785911674}
+  - component: {fileID: 1691670289808569944}
   m_Layer: 0
   m_Name: FlameThrower
   m_TagString: FlameThrower
@@ -93,6 +94,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1691670289808569944
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7049601567552431791}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0643765, y: 1.4982854, z: 1.0643765}
+  m_Center: {x: 0, y: 0.7491427, z: 0}
 --- !u!1001 &3003824619265964410
 PrefabInstance:
   m_ObjectHideFlags: 0

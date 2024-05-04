@@ -89,7 +89,7 @@ public class LevelCreator : MonoBehaviour
 
 
 
-            obstacle.transform.position = obstaclesTransforms[tempSelectedLocation].position;
+            obstacle.transform.position = obstaclesTransforms[tempSelectedLocation].position + new Vector3(0, 2.64f, 0);
             obstacle.transform.SetParent(obstaclesTransforms[tempSelectedLocation].transform);
 
         }
