@@ -63,7 +63,7 @@ public class BossEnemy : MainEnemy
                 //Enemy Attack Animation
 
                 enemyAnimator.animator.Play(enemyAnimator.attackAnimation);
-                Invoke("PlayIdleAnimation", 2f);
+                Invoke("PlayChaseAnimation", 2f);
                 StartCoroutine(WaitAttackForAnimation());
                 isAttackable = false;
                 StartCoroutine(AttackCooldown());
@@ -79,6 +79,10 @@ public class BossEnemy : MainEnemy
     public void PlayIdleAnimation()
     {
         enemyCurrentState = EnemyState.Idle;
+    }
+    public void PlayChaseAnimation()
+    {
+        enemyCurrentState = EnemyState.Chase;
     }
 
     public override void Die()

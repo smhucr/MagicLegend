@@ -50,6 +50,7 @@ public abstract class MainEnemy : MonoBehaviour
         if (gameManager.isGameOver)
         {
             enemyCurrentState = EnemyState.Idle;
+            Idle();
         }
         else
         {
