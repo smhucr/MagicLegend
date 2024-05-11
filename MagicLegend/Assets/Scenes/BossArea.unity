@@ -135,7 +135,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 6, y: 6, z: 3.6518292}
-  m_Center: {x: 0.0000005364418, y: -0.002716899, z: 0.42422605}
+  m_Center: {x: 0.0000005364418, y: 2, z: 0.42422605}
 --- !u!114 &21568941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   follow_distance: 0
   attackTime: 0
   isAttackable: 0
-  enemyAnimator: {fileID: 0}
+  enemyAnimator: {fileID: 8113835617332958458}
   enemyCurrentState: 0
 --- !u!1 &78869126
 GameObject:
@@ -4715,7 +4715,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3430905251401552386}
-  m_LocalRotation: {x: 0.4516039, y: -0.00000015197561, z: 0.00000007692373, w: 0.8922186}
+  m_LocalRotation: {x: 0.4516039, y: -0.00000019539719, z: 0.00000009890192, w: 0.8922186}
   m_LocalPosition: {x: 0.00000389336, y: 14.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5309,6 +5309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8113835617332958457}
   - component: {fileID: 2166267983404448131}
+  - component: {fileID: 8113835617332958458}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
@@ -5355,6 +5356,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5386138069099746243}
+  - component: {fileID: 5386138069099746244}
+  - component: {fileID: 5386138069099746245}
   m_Layer: 0
   m_Name: bones
   m_TagString: Untagged
@@ -5378,6 +5381,32 @@ Transform:
   m_Father: {fileID: 8531581113037918408}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5386138069099746244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227586631119200964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 979b32d9226e6c540888c61bd52368d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainEnemy: {fileID: 21568941}
+--- !u!135 &5386138069099746245
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227586631119200964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!1 &5540802192184885706
 GameObject:
   m_ObjectHideFlags: 0
@@ -5420,7 +5449,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3362674204631495938}
-  m_LocalRotation: {x: 0.4516039, y: -0.00000015197561, z: 0.00000007692373, w: 0.8922186}
+  m_LocalRotation: {x: 0.4516039, y: -0.00000019539719, z: 0.00000009890192, w: 0.8922186}
   m_LocalPosition: {x: 0.00000389336, y: 14.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5825,6 +5854,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -179.991, z: 0}
+--- !u!114 &8113835617332958458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5098491878137784042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0fedb862b74104789232bbe2a2614d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  idleAnimation: Golem_Idle_long
+  chaseAnimation: Golem_Walk
+  attackAnimation: Golem_Attack
+  deathAnimation: Golem_Death
 --- !u!4 &8143248867031021683
 Transform:
   m_ObjectHideFlags: 0
@@ -5865,7 +5911,7 @@ Transform:
   m_GameObject: {fileID: 8730083288906920543}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.05, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5914,7 +5960,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6340814759149414834}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 2.5, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

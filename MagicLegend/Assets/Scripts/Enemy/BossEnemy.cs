@@ -8,7 +8,7 @@ public class BossEnemy : MainEnemy
     private void Start()
     {
         damageValue = 1;
-        attackTime = 1f;
+        attackTime = 2f;
         health = 5f;
         maxHealth = health;
         moveSpeed = 4f;
@@ -20,7 +20,7 @@ public class BossEnemy : MainEnemy
     public override void Idle()
     {
         print("I am idling");
-        // Enemy Idle Animation
+        enemyAnimator.animator.Play(enemyAnimator.idleAnimation);
 
 
     }
@@ -28,12 +28,16 @@ public class BossEnemy : MainEnemy
     public override void Chase()
     {
         print("I am chasing");
+        enemyAnimator.animator.Play(enemyAnimator.chaseAnimation);
         // Enemy Chase Player 
         distance = Vector3.Distance(transform.position, playerFollowObject.position);
         if (distance > follow_distance)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerFollowObject.position.x, transform.position.y, playerFollowObject.position.z), moveSpeed * Time.deltaTime);
+            transform.LookAt(new Vector3(playerFollowObject.position.x,transform.position.y, playerFollowObject.position.z));
         }
+        // Change To Idle State code Write Here
+        //else if
         else
         {
             enemyCurrentState = EnemyState.Attack;
@@ -50,25 +54,37 @@ public class BossEnemy : MainEnemy
             distance = Vector3.Distance(transform.position, playerFollowObject.position);
             if (distance > follow_distance)
             {
-                enemyCurrentState = EnemyState.Idle;
+                enemyCurrentState = EnemyState.Chase;
 
             }
             else
             {
                 print("I am attacking");
                 //Enemy Attack Animation
-                playerComponentObject.GetComponent<MainPlayer>().TakeDamage(damageValue);
 
+                enemyAnimator.animator.Play(enemyAnimator.attackAnimation);
+                Invoke("PlayIdleAnimation", 2f);
+                StartCoroutine(WaitAttackForAnimation());
                 isAttackable = false;
                 StartCoroutine(AttackCooldown());
 
             }
         }
     }
+    IEnumerator WaitAttackForAnimation()
+    {
+        yield return new WaitForSeconds(0.8f);
+        playerComponentObject.GetComponent<MainPlayer>().TakeDamage(damageValue);
+    }
+    public void PlayIdleAnimation()
+    {
+        enemyCurrentState = EnemyState.Idle;
+    }
 
     public override void Die()
     {
         print("I am dying");
+        enemyAnimator.animator.Play(enemyAnimator.deathAnimation);
         //Enemy Die Animation After Die Animation Destroy the Object    
 
     }

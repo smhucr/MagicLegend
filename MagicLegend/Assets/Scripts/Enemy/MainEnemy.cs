@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class MainEnemy : MonoBehaviour
 {
+    private GameManager gameManager;
     [Header("MainPlayer")]
     public Transform playerComponentObject;
     public Transform playerFollowObject;
@@ -23,7 +24,7 @@ public abstract class MainEnemy : MonoBehaviour
     [SerializeField]
     public bool isAttackable;
     [Header("Animation")]
-    public Animator enemyAnimator;
+    public AnimatorController enemyAnimator;
 
 
     //State Machine
@@ -41,28 +42,41 @@ public abstract class MainEnemy : MonoBehaviour
         maxHealth = health;
         playerComponentObject = GameManager.instance.mainPlayer.transform;
         isAttackable = true;
+        gameManager = GameManager.instance;
     }
 
     private void FixedUpdate()
     {
-        if (health <= 0)
-            enemyCurrentState = EnemyState.Die;
-
-        switch (enemyCurrentState)
+        if (gameManager.isGameOver)
         {
-            case EnemyState.Idle:
-                Idle();
-                break;
-            case EnemyState.Chase:
-                Chase();
-                break;
-            case EnemyState.Attack:
-                Attack();
-                break;
-            case EnemyState.Die:
-                Die();
-                break;
+            enemyCurrentState = EnemyState.Idle;
         }
+        else
+        {
+            if (health <= 0)
+            {
+
+                enemyCurrentState = EnemyState.Die;
+            }
+
+            switch (enemyCurrentState)
+            {
+                case EnemyState.Idle:
+                    Idle();
+                    break;
+                case EnemyState.Chase:
+                    Chase();
+                    break;
+                case EnemyState.Attack:
+                    Attack();
+                    break;
+                case EnemyState.Die:
+                    Die();
+                    break;
+            }
+        }
+
+
     }
 
     public abstract void Idle();

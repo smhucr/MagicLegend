@@ -13,6 +13,8 @@ public class ParticleSkill : MonoBehaviour
         else if (other.CompareTag("Enemy"))
         {
             print("taking damage");
+            other.GetComponent<MainEnemy>().enemyAnimator.animator.Play(other.GetComponent<MainEnemy>().enemyAnimator.chaseAnimation);
+            
         }
     }
 }

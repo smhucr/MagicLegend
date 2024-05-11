@@ -586,7 +586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &52481351
 Transform:
   m_ObjectHideFlags: 0
@@ -2881,7 +2881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &516735652
 Transform:
   m_ObjectHideFlags: 0
@@ -5390,7 +5390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1001882798
 Transform:
   m_ObjectHideFlags: 0
@@ -11646,10 +11646,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1001882798}
     m_Modifications:
+    - target: {fileID: 6705005662944952484, guid: 046d11a0234c05049ae41e420ce8df7b,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705005662944952487, guid: 046d11a0234c05049ae41e420ce8df7b,
+        type: 3}
+      propertyPath: mainEnemy
+      value: 
+      objectReference: {fileID: 6705005663779837867}
     - target: {fileID: 6705005663058935825, guid: 046d11a0234c05049ae41e420ce8df7b,
         type: 3}
       propertyPath: m_Name
       value: AgressiveEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705005663058935825, guid: 046d11a0234c05049ae41e420ce8df7b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6705005663058935829, guid: 046d11a0234c05049ae41e420ce8df7b,
         type: 3}
@@ -11713,6 +11728,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 046d11a0234c05049ae41e420ce8df7b, type: 3}
+--- !u!114 &6705005663779837867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6705005663058935915, guid: 046d11a0234c05049ae41e420ce8df7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6705005663779837866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca1fe019d17f1143bc2793aee19f0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8225746796425351380
 PrefabInstance:
   m_ObjectHideFlags: 0

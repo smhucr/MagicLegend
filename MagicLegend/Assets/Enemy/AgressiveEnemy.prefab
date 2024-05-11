@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979b32d9226e6c540888c61bd52368d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agressiveEnemy: {fileID: 6705005663058935915}
+  mainEnemy: {fileID: 6705005663058935915}
 --- !u!1 &6705005663058935825
 GameObject:
   m_ObjectHideFlags: 0

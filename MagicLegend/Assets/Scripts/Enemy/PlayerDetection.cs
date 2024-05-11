@@ -5,12 +5,15 @@ using static MainEnemy;
 
 public class PlayerDetection : MonoBehaviour
 {
-    public AgressiveEnemy agressiveEnemy;
+    public MainEnemy mainEnemy;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Bullet"))
         {
-            agressiveEnemy. enemyCurrentState = EnemyState.Chase;
+
+            if (mainEnemy.enemyCurrentState != EnemyState.Attack && mainEnemy.enemyCurrentState != EnemyState.Die)
+                mainEnemy.enemyCurrentState = EnemyState.Chase;
+            other.gameObject.SetActive(false);
         }
     }
 
