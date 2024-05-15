@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public ObjectsPool objectPool;
     public HealthManager healthManager;
+    public MarketManager marketManager;
     [Header("LevelState")]
     public SceneState currentSceneState;
     [Header("UI")]
@@ -400,10 +401,18 @@ public class GameManager : MonoBehaviour
         currentMergedAura = mergedAura;
     }
 
+    public void ChangeElement()
+    {
+        TransitionManager.Instance().Transition("LobbyScene", transitions[0], 0.5f);
+
+        PlayerPrefs.SetInt("SelectedElement", marketManager.selectedElementIndex);
+    }
+
     public void BackToMainMenu()
     {
         TransitionManager.Instance().Transition("LobbyScene", transitions[0], 0.5f);
     }
+
 
 
     public void RestartRunPart()
