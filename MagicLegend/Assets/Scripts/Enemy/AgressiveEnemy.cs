@@ -13,7 +13,7 @@ public class AgressiveEnemy : MainEnemy
         health = 5f;
         maxHealth = health;
         moveSpeed = 4f;
-        follow_distance = 1f;
+        follow_distance = 3.75f;
         playerComponentObject = GameManager.instance.mainPlayer.transform;
         playerFollowObject = GameManager.instance.playerParent.transform;
     }
@@ -22,6 +22,7 @@ public class AgressiveEnemy : MainEnemy
     {
         print("I am idling");
         // Enemy Idle Animation
+        enemyAnimator.animator.Play(enemyAnimator.idleAnimation);
 
 
     }
@@ -29,11 +30,13 @@ public class AgressiveEnemy : MainEnemy
     public override void Chase()
     {
         print("I am chasing");
+        enemyAnimator.animator.Play(enemyAnimator.chaseAnimation);
         // Enemy Chase Player 
         distance = Vector3.Distance(transform.position, playerFollowObject.position);
         if (distance > follow_distance)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerFollowObject.position.x, transform.position.y, playerFollowObject.position.z), moveSpeed * Time.deltaTime);
+            transform.LookAt(new Vector3(playerFollowObject.position.x, transform.position.y, playerFollowObject.position.z));
         }
         else
         {
@@ -51,15 +54,16 @@ public class AgressiveEnemy : MainEnemy
             distance = Vector3.Distance(transform.position, playerFollowObject.position);
             if (distance > follow_distance)
             {
-                enemyCurrentState = EnemyState.Idle;
+                enemyCurrentState = EnemyState.Chase;
 
             }
             else
             {
                 print("I am attacking");
                 //Enemy Attack Animation
-                playerComponentObject.GetComponent<MainPlayer>().TakeDamage(damageValue);
-
+                enemyAnimator.animator.Play(enemyAnimator.attackAnimation);
+                Invoke("PlayChaseAnimation", 1f);
+                StartCoroutine(WaitAttackForAnimation(0.6f));
                 isAttackable = false;
                 StartCoroutine(AttackCooldown());
 
@@ -70,7 +74,10 @@ public class AgressiveEnemy : MainEnemy
     public override void Die()
     {
         print("I am dying");
-        //Enemy Die Animation After Die Animation Destroy the Object    
+        //Enemy Die Animation After Die Animation Destroy the Object
+        enemyAnimator.animator.Play(enemyAnimator.deathAnimation);
+        gameObject.transform.GetChild(0).GetComponent<Collider>().enabled = false;
+        
 
     }
 

@@ -91,7 +91,19 @@ public abstract class MainEnemy : MonoBehaviour
         yield return new WaitForSeconds(attackTime);
         isAttackable = true;
     }
-
+    public IEnumerator WaitAttackForAnimation(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        playerComponentObject.GetComponent<MainPlayer>().TakeDamage(damageValue);
+    }
+    public void PlayIdleAnimation()
+    {
+        enemyCurrentState = EnemyState.Idle;
+    }
+    public void PlayChaseAnimation()
+    {
+        enemyCurrentState = EnemyState.Chase;
+    }
     public void TakeDamage(int damageValue)
     {
         health -= damageValue;

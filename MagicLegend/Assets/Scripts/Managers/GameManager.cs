@@ -83,6 +83,8 @@ public class GameManager : MonoBehaviour
         elementLevels = new int[4];
         Application.targetFrameRate = 60;
         MakeInstance();
+        //Player Features
+        playerDamageMultiplier = 1.2f;
         currentMoney = PlayerPrefs.GetInt("CurrentMoney");
         currentMoneyText.text = "Essence: " + currentMoney.ToString();
         upgradeKitCount = PlayerPrefs.GetInt("UpgradeKitCount");

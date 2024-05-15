@@ -63,33 +63,21 @@ public class BossEnemy : MainEnemy
                 //Enemy Attack Animation
 
                 enemyAnimator.animator.Play(enemyAnimator.attackAnimation);
-                Invoke("PlayChaseAnimation", 2f);
-                StartCoroutine(WaitAttackForAnimation());
+                Invoke("PlayChaseAnimation", 1f);
+                StartCoroutine(WaitAttackForAnimation(0.8f));
                 isAttackable = false;
                 StartCoroutine(AttackCooldown());
 
             }
         }
     }
-    IEnumerator WaitAttackForAnimation()
-    {
-        yield return new WaitForSeconds(0.8f);
-        playerComponentObject.GetComponent<MainPlayer>().TakeDamage(damageValue);
-    }
-    public void PlayIdleAnimation()
-    {
-        enemyCurrentState = EnemyState.Idle;
-    }
-    public void PlayChaseAnimation()
-    {
-        enemyCurrentState = EnemyState.Chase;
-    }
-
+   
     public override void Die()
     {
         print("I am dying");
         enemyAnimator.animator.Play(enemyAnimator.deathAnimation);
         //Enemy Die Animation After Die Animation Destroy the Object    
+        gameObject.transform.GetChild(0).GetComponent<Collider>().enabled = false;
 
     }
 }
