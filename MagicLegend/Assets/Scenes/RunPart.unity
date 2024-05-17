@@ -3392,6 +3392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 45301199}
   healthManager: {fileID: 142141238}
+  marketManager: {fileID: 0}
   currentSceneState: 0
   scrollHand: {fileID: 29458053}
   marketOverview: {fileID: 0}
@@ -4743,7 +4744,7 @@ PrefabInstance:
     - target: {fileID: 5557388678242075570, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5557388678242075570, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
         type: 3}
@@ -4753,7 +4754,7 @@ PrefabInstance:
     - target: {fileID: 5557388678242075570, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5557388678242075570, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
         type: 3}
@@ -4823,7 +4824,7 @@ PrefabInstance:
     - target: {fileID: 5557388678242075570, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 960
+      value: -960
       objectReference: {fileID: 0}
     - target: {fileID: 5557388678242075570, guid: ac1ebf9782cab9043a027ad6d8af6b7d,
         type: 3}
