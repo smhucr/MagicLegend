@@ -13,9 +13,11 @@ public class GameManager : MonoBehaviour
     public ObjectsPool objectPool;
     public HealthManager healthManager;
     public MarketManager marketManager;
+    public RewardManager rewardManager;
     [Header("LevelState")]
     public SceneState currentSceneState;
     [Header("UI")]
+    public TextMeshProUGUI levelText;
     public GameObject scrollHand;
     public GameObject marketOverview;
     public GameObject gameOverPanel;
@@ -135,8 +137,11 @@ public class GameManager : MonoBehaviour
                 elementLevelCostText.text = elementLevelCost.ToString();
             }
         }
-
-
+        //Assing Level
+        if (PlayerPrefs.GetInt("Level") == 0)
+            PlayerPrefs.SetInt("Level", 1);
+        if (levelText != null)
+            levelText.text = ("Level " + PlayerPrefs.GetInt("Level")).ToString();
         //Assign FireRate
         fireRateLevel = PlayerPrefs.GetInt("FireRateLevel");
         fireRate = PlayerPrefs.GetFloat("FireRate");
@@ -252,7 +257,8 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         startGame = false;
         winGamePanel.SetActive(true);
-
+        if (currentSceneState == SceneState.RunPart)
+            PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
     }
 
     public void GameOver()

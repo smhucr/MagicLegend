@@ -19,8 +19,11 @@ public class ButtonShooting : MonoBehaviour
     public int selectedElement;
     [Header("Skill Buttons")]
     public Button shootButton;
+    public bool isShootable = true;
     public Button blastButton;
+    public bool isBlastable = true;
     public Button rainButton;
+    public bool isRainable = true;
     public Button beamButton;
     [Header("Beam Properties")]
     [SerializeField]
@@ -63,12 +66,17 @@ public class ButtonShooting : MonoBehaviour
         beam.SetActive(false);
         line = beam.GetComponent<LineRenderer>();
         line.positionCount = 2;
+        //Assign Booleans
+        isShootable = true;
+        isBlastable = true;
+        isRainable = true;
 
     }
 
     private void FixedUpdate()
     {
         bulletPoint.rotation = player.transform.rotation;
+        CheckShootables();
     }
 
     public void Shoot(int objectType)
@@ -87,7 +95,8 @@ public class ButtonShooting : MonoBehaviour
             obj.transform.position = bulletPoint.position;
             gameManager.audioSource.PlayOneShot(gameManager.audioClips[0], 0.1f);
             StartCoroutine(Disableobj(obj, 1.5f));
-            StartCoroutine(DisableButton(shootButton, 0.15f));
+            isShootable = false;
+            StartCoroutine(DisableButton(shootButton, 0, 0.15f));
         }
     }
 
@@ -107,7 +116,8 @@ public class ButtonShooting : MonoBehaviour
             StartCoroutine(Disableobj(blastSphere, 4f));
             StartCoroutine(Disableobj(auraCast, 1f));
             StartCoroutine(WaitingAura(gameManager.currentMergedAura));
-            StartCoroutine(DisableButton(blastButton, 3f));
+            isBlastable = false;
+            StartCoroutine(DisableButton(blastButton, 1, 3f));
         }
     }
 
@@ -127,7 +137,8 @@ public class ButtonShooting : MonoBehaviour
             StartCoroutine(Disableobj(magicRain, 5f));
             StartCoroutine(Disableobj(auraCast, 1f));
             StartCoroutine(WaitingAura(gameManager.currentMergedAura));
-            StartCoroutine(DisableButton(rainButton, 8f));
+            isRainable = false;
+            StartCoroutine(DisableButton(rainButton, 2, 8f));
         }
     }
 
@@ -156,17 +167,43 @@ public class ButtonShooting : MonoBehaviour
         beamStart.SetActive(false);
         beamEnd.SetActive(false);
     }
+
+    public void CheckShootables()
+    {
+        if (isShootable)
+            shootButton.interactable = true;
+        if (isBlastable)
+            blastButton.interactable = true;
+        if (isRainable)
+            rainButton.interactable = true;
+    }
+
     // Object Disable
     IEnumerator Disableobj(GameObject obj, float timer)
     {
         yield return new WaitForSeconds(timer);
         obj.SetActive(false);
     }
-    IEnumerator DisableButton(Button shootButton, float timer)
+    IEnumerator DisableButton(Button shootButton, int order, float timer)
     {
         shootButton.interactable = false;
         yield return new WaitForSeconds(timer);
-        shootButton.interactable = true;
+        ReturnTrue(order);
+    }
+    public void ReturnTrue(int order)
+    {
+        if (order == 0)
+        {
+            isShootable = true;
+        }
+        else if (order == 1)
+        {
+            isBlastable = true;
+        }
+        else if (order == 2)
+        {
+            isRainable = true;
+        }
     }
     IEnumerator WaitingAura(GameObject gameObject)
     {
