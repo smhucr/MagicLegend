@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     public GameObject mainPlayer; // Player who has script features
     public int playerHealth;
     public float playerDamageMultiplier;
+    public int playerDamage;
     [Header("Player Settings")]
     public float playerSpeed = 5f;
     public DynamicJoystick joystick;
@@ -92,6 +93,7 @@ public class GameManager : MonoBehaviour
         currentMoneyText.text = "Essence: " + currentMoney.ToString();
         upgradeKitCount = PlayerPrefs.GetInt("UpgradeKitCount");
         upgradeKitCountText.text = "Upgrade Kit: " + upgradeKitCount.ToString();
+
         //Assign Element Levels
         selectedElement = PlayerPrefs.GetInt("SelectedElement");
 
@@ -177,7 +179,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
+        //Provide Player Damage
+        playerDamage = (int)(currentElementLevel * playerDamageMultiplier);
         //Skill Prefabs
         SetSkillPrefabs();
         //DontDestroyOnLoad(gameObject);

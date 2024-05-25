@@ -9,7 +9,7 @@ public class BossEnemy : MainEnemy
     {
         damageValue = 1;
         attackTime = 2f;
-        health = 5f;
+        health = 10000f;
         maxHealth = health;
         moveSpeed = 4f;
         follow_distance = 2f;
@@ -63,7 +63,7 @@ public class BossEnemy : MainEnemy
                 //Enemy Attack Animation
 
                 enemyAnimator.animator.Play(enemyAnimator.attackAnimation);
-                Invoke("PlayChaseAnimation", 1f);
+                Invoke("PlayChaseAnimation", 1.85f);
                 StartCoroutine(WaitAttackForAnimation(0.8f));
                 isAttackable = false;
                 StartCoroutine(AttackCooldown());
@@ -78,6 +78,7 @@ public class BossEnemy : MainEnemy
         enemyAnimator.animator.Play(enemyAnimator.deathAnimation);
         //Enemy Die Animation After Die Animation Destroy the Object    
         gameObject.transform.GetChild(0).GetComponent<Collider>().enabled = false;
+        GameManager.instance.WinGame();
 
     }
 }

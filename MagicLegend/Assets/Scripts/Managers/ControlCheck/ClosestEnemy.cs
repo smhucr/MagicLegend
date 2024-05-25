@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngineInternal;
 
 public class ClosestEnemy : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class ClosestEnemy : MonoBehaviour
 
         foreach (var hit in hits)
         {
-            if (hit.CompareTag("Enemy"))
+            if (hit.CompareTag("Enemy") || hit.CompareTag("Dummy"))
             {
                 float distance = Vector3.Distance(transform.position, hit.transform.position);
                 if (distance < closestDistance)

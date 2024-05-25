@@ -18,6 +18,8 @@ TagManager:
   - SpinnedSpike
   - Teleport
   - FlameThrower
+  - Blast
+  - Beam
   layers:
   - Default
   - TransparentFX

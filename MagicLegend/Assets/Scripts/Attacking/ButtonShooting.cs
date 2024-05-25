@@ -25,6 +25,8 @@ public class ButtonShooting : MonoBehaviour
     public Button rainButton;
     public bool isRainable = true;
     public Button beamButton;
+    private bool isBeaming = false;
+    private float beamTimer = 0;
     [Header("Beam Properties")]
     [SerializeField]
     private GameObject beamStart;
@@ -66,6 +68,7 @@ public class ButtonShooting : MonoBehaviour
         beam.SetActive(false);
         line = beam.GetComponent<LineRenderer>();
         line.positionCount = 2;
+        beamTimer = 1;
         //Assign Booleans
         isShootable = true;
         isBlastable = true;
@@ -76,6 +79,35 @@ public class ButtonShooting : MonoBehaviour
     private void FixedUpdate()
     {
         bulletPoint.rotation = player.transform.rotation;
+        if (beamTimer > 0.1f)
+        {
+            beamTimer -= Time.deltaTime;
+        }
+        else if (gameManager.closestEnemy != null)
+        {
+            if (gameManager.closestEnemy.CompareTag("Enemy"))
+            {
+                if (isBeaming)
+                {
+                    MainEnemy mainEnemy = gameManager.closestEnemy.GetComponent<MainEnemy>();
+                    if (mainEnemy.enemyCurrentState != MainEnemy.EnemyState.Attack && mainEnemy.enemyCurrentState != MainEnemy.EnemyState.Die)
+                        mainEnemy.enemyCurrentState = MainEnemy.EnemyState.Chase;
+                    mainEnemy.TakeDamage(gameManager.playerDamage * 7);
+                    beamTimer = 1;
+                }
+            }
+            else if (gameManager.closestEnemy.CompareTag("Dummy"))
+            {
+                if (isBeaming)
+                {
+                    if (gameManager.closestEnemy.transform.GetChild(0).GetComponent<Dummy>() != null)
+                        gameManager.closestEnemy.transform.GetChild(0).GetComponent<Dummy>().TakingDamage();
+                    beamTimer = 1;
+                }
+            }
+        }
+
+
         CheckShootables();
     }
 
@@ -144,25 +176,34 @@ public class ButtonShooting : MonoBehaviour
 
     public void BeamShootOnPressed()
     {
-        gameManager.isMoveable = false;
-        beamStart.transform.position = beamStartPoint.position;
-        line.SetPosition(0, beamStartPoint.position);
-        if (gameManager.closestEnemy != null)
-            beamEnd.transform.position = gameManager.closestEnemy.position;
-        else
-            beamEnd.transform.position = beamEndPoint.position;
-        line.SetPosition(1, beamEnd.transform.position);
-        beamStart.transform.LookAt(beamEnd.transform.position);
-        beamEnd.transform.LookAt(beamStart.transform.position);
+        if (gameManager.isAvailableShoot && gameManager.startGame)
+        {
+            gameManager.isMoveable = false;
+            beamStart.transform.position = beamStartPoint.position;
+            line.SetPosition(0, beamStartPoint.position);
+            if (gameManager.closestEnemy != null)
+                beamEnd.transform.position = gameManager.closestEnemy.position;
+            else
+                beamEnd.transform.position = beamEndPoint.position;
+            line.SetPosition(1, beamEnd.transform.position);
+            beamStart.transform.LookAt(beamEnd.transform.position);
+            beamEnd.transform.LookAt(beamStart.transform.position);
 
-        beam.SetActive(true);
-        beamStart.SetActive(true);
-        beamEnd.SetActive(true);
+
+            //Deal Damage Per Second with timer
+            isBeaming = true;
+
+            beam.SetActive(true);
+            beamStart.SetActive(true);
+            beamEnd.SetActive(true);
+        }
+
     }
 
     public void BeamShootNonPressed()
     {
         gameManager.isMoveable = true;
+        isBeaming = false;
         beam.SetActive(false);
         beamStart.SetActive(false);
         beamEnd.SetActive(false);

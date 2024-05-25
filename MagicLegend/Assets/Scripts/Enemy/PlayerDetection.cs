@@ -13,11 +13,19 @@ public class PlayerDetection : MonoBehaviour
 
             if (mainEnemy.enemyCurrentState != EnemyState.Attack && mainEnemy.enemyCurrentState != EnemyState.Die)
                 mainEnemy.enemyCurrentState = EnemyState.Chase;
-            float elementLevel = GameManager.instance.currentElementLevel;
-            int damage = (int)(elementLevel * GameManager.instance.playerDamageMultiplier);
+
+            int damage = GameManager.instance.playerDamage;
             mainEnemy.TakeDamage(damage);
             other.gameObject.SetActive(false);
         }
+        else if (other.CompareTag("Blast"))
+        {
+            if (mainEnemy.enemyCurrentState != EnemyState.Attack && mainEnemy.enemyCurrentState != EnemyState.Die)
+                mainEnemy.enemyCurrentState = EnemyState.Chase;
+            int damage = GameManager.instance.playerDamage;
+            mainEnemy.TakeDamage((int)(damage * 1.5f));
+        }
+
     }
 
 }

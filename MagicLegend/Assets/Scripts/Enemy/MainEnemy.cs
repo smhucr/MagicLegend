@@ -47,19 +47,18 @@ public abstract class MainEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameManager.isGameOver)
+        if (health <= 0)
+        {
+
+            enemyCurrentState = EnemyState.Die;
+        }
+        if (gameManager.isGameOver && enemyCurrentState != EnemyState.Die)
         {
             enemyCurrentState = EnemyState.Idle;
             Idle();
         }
         else
         {
-            if (health <= 0)
-            {
-
-                enemyCurrentState = EnemyState.Die;
-            }
-
             switch (enemyCurrentState)
             {
                 case EnemyState.Idle:
