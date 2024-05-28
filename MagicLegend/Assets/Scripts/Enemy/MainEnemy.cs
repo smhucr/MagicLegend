@@ -111,7 +111,7 @@ public abstract class MainEnemy : MonoBehaviour
     {
         health -= damageValue;
         health = Mathf.Clamp(health, 0, maxHealth);
-        if (health <= 0)
+        if (health <= 0 && !gameManager.isGameOver)
         {
             Die();
             if (Random.Range(0, 20) != 5)

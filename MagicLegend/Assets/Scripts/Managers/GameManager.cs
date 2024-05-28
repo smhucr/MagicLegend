@@ -260,8 +260,10 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         startGame = false;
         winGamePanel.SetActive(true);
-        if (currentSceneState == SceneState.RunPart)
+        if (currentSceneState == SceneState.RunPart || currentSceneState == SceneState.BossPart)
             PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+        if (currentSceneState == SceneState.BossPart)
+            MoneyIncrease(350);
     }
 
     public void GameOver()
@@ -327,10 +329,18 @@ public class GameManager : MonoBehaviour
     public void FireRateIncreaser()
     {
         //Increase FireRate with essence and max 20 level
-        if (fireRateLevel < 20 && currentMoney >= fireRateCost)
+        if (fireRateLevel < 20 && (currentMoney >= fireRateCost || upgradeKitCount > 0))
         {
             //current money minus and change money text
-            MoneyDecrease(fireRateCost);
+            if (upgradeKitCount > 0)
+            {
+                UpgradeKitDecrease(1);
+            }
+            else
+            {
+                //current money minus and change money text
+                MoneyDecrease(fireRateCost);
+            }
 
 
             fireRateCost = (int)(fireRateCost * 1.3f);
@@ -355,7 +365,7 @@ public class GameManager : MonoBehaviour
     {
 
         //Increase element level with upgrade kit and max 20 level
-        if (currentElementLevel < 20 && currentMoney >= elementLevelCost)
+        if (currentElementLevel < 20 && (currentMoney >= elementLevelCost || upgradeKitCount > 0 ))
         {
             if (upgradeKitCount > 0)
             {
