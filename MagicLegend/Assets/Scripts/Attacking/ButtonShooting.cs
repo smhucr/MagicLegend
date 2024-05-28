@@ -25,6 +25,7 @@ public class ButtonShooting : MonoBehaviour
     public Button rainButton;
     public bool isRainable = true;
     public Button beamButton;
+    public bool isBeamable = true;
     private bool isBeaming = false;
     private float beamTimer = 0;
     [Header("Beam Properties")]
@@ -128,7 +129,7 @@ public class ButtonShooting : MonoBehaviour
             gameManager.audioSource.PlayOneShot(gameManager.audioClips[0], 0.1f);
             StartCoroutine(Disableobj(obj, 1.5f));
             isShootable = false;
-            StartCoroutine(DisableButton(shootButton, 0, 0.15f));
+            StartCoroutine(DisableButton(shootButton, 0, gameManager.fireRate));
         }
     }
 
@@ -176,7 +177,7 @@ public class ButtonShooting : MonoBehaviour
 
     public void BeamShootOnPressed()
     {
-        if (gameManager.isAvailableShoot && gameManager.startGame)
+        if (gameManager.isAvailableShoot && gameManager.startGame && isBeamable)
         {
             gameManager.isMoveable = false;
             beamStart.transform.position = beamStartPoint.position;
@@ -192,7 +193,7 @@ public class ButtonShooting : MonoBehaviour
 
             //Deal Damage Per Second with timer
             isBeaming = true;
-
+            isBeamable = false;
             beam.SetActive(true);
             beamStart.SetActive(true);
             beamEnd.SetActive(true);
@@ -203,6 +204,7 @@ public class ButtonShooting : MonoBehaviour
     public void BeamShootNonPressed()
     {
         gameManager.isMoveable = true;
+        StartCoroutine(DisableButton(beamButton, 3, 12f));
         isBeaming = false;
         beam.SetActive(false);
         beamStart.SetActive(false);
@@ -217,6 +219,8 @@ public class ButtonShooting : MonoBehaviour
             blastButton.interactable = true;
         if (isRainable)
             rainButton.interactable = true;
+        if (isBeamable)
+            beamButton.interactable = true;
     }
 
     // Object Disable
@@ -244,6 +248,10 @@ public class ButtonShooting : MonoBehaviour
         else if (order == 2)
         {
             isRainable = true;
+        }
+        else if(order ==3)
+        {
+            isBeamable = true;
         }
     }
     IEnumerator WaitingAura(GameObject gameObject)

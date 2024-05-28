@@ -1,4 +1,5 @@
 using DG.Tweening;
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,9 @@ public class AgressiveEnemy : MainEnemy
     {
         damageValue = 1;
         attackTime = 1f;
-        health = 5f;
+        linearHP = 1.3f;
+        exponentialHP = 0.02f;
+        health = CalculateHP(PlayerPrefs.GetInt("Level"),3,linearHP,exponentialHP);
         maxHealth = health;
         moveSpeed = 4f;
         follow_distance = 3.75f;
@@ -75,6 +78,7 @@ public class AgressiveEnemy : MainEnemy
     {
         print("I am dying");
         //Enemy Die Animation After Die Animation Destroy the Object
+        
         enemyAnimator.animator.Play(enemyAnimator.deathAnimation);
         gameObject.transform.GetChild(0).GetComponent<Collider>().enabled = false;
         

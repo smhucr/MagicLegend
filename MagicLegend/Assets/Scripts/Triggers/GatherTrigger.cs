@@ -17,7 +17,7 @@ public class GatherTrigger : MonoBehaviour
         if (other.CompareTag("Essence"))
         {
             print("Gathered Essence");
-            gameManager.MoneyIncrease(25);
+            gameManager.MoneyIncrease(15);
             other.gameObject.SetActive(false);
         }
         else if (other.CompareTag("Treasure"))

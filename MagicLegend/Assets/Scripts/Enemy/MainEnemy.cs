@@ -23,6 +23,10 @@ public abstract class MainEnemy : MonoBehaviour
     public float attackTime;
     [SerializeField]
     public bool isAttackable;
+    [SerializeField]
+    public float linearHP;
+    [SerializeField]
+    public float exponentialHP;
     [Header("Animation")]
     public AnimatorController enemyAnimator;
 
@@ -108,7 +112,23 @@ public abstract class MainEnemy : MonoBehaviour
         health -= damageValue;
         health = Mathf.Clamp(health, 0, maxHealth);
         if (health <= 0)
+        {
             Die();
+            if (Random.Range(0, 20) != 5)
+            {
+                GameManager.instance.MoneyIncrease(Random.Range(25, 150));
+            }
+            else
+            {
+                GameManager.instance.UpgradeKitIncrease(1);
+            }
+        }
+    }
+
+    protected int CalculateHP(int level, int baseHP, float linearHP, float exponentialHP)
+    {
+        int hp = (int)(baseHP + (linearHP * level) * Mathf.Pow(1 + exponentialHP, level));
+        return hp;
     }
 
 

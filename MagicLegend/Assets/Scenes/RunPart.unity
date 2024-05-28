@@ -3496,6 +3496,7 @@ MonoBehaviour:
   mainPlayer: {fileID: 965556817}
   playerHealth: 2
   playerDamageMultiplier: 1.2
+  playerDamage: 0
   playerSpeed: 5
   joystick: {fileID: 0}
   rb: {fileID: 1937709386}
@@ -11992,7 +11993,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137578418}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e823cb6316a40c54cb9ae2ab3d528ff6, type: 3}
   m_Name: 

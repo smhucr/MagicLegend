@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
         fireRate = PlayerPrefs.GetFloat("FireRate");
         if (fireRate == 0)
         {
-            fireRate = 2.5f;
+            fireRate = 1.5f;
             PlayerPrefs.SetFloat("FireRate", fireRate);
         }
         if (fireRateLevel == 0)
@@ -337,7 +337,7 @@ public class GameManager : MonoBehaviour
             fireRateCostText.text = fireRateCost.ToString();
             fireRateUpgradeToText.text = "Upgrade to " + (fireRateLevel + 2).ToString();
             fireRateLevel++;
-            fireRate = fireRate - 0.1f;
+            fireRate = fireRate - 0.07f;
             PlayerPrefs.SetInt("FireRateLevel", fireRateLevel);
             PlayerPrefs.SetInt("FireRateCost", fireRateCost);
             PlayerPrefs.SetFloat("FireRate", fireRate);

@@ -8,8 +8,10 @@ public class BossEnemy : MainEnemy
     private void Start()
     {
         damageValue = 1;
-        attackTime = 2f;
-        health = 10000f;
+        attackTime = 2f; 
+        linearHP = 15f;
+        exponentialHP = 0.025f;
+        health = CalculateHP(PlayerPrefs.GetInt("Level"), 100, linearHP, exponentialHP);
         maxHealth = health;
         moveSpeed = 4f;
         follow_distance = 2f;
