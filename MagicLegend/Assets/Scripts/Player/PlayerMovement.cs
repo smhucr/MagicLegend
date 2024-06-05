@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     private DynamicJoystick joystick;
     private Rigidbody rb;
+    private MainPlayer mainPlayer;
     [SerializeField] private float moveSpeed = 5f;
 
     private void Start()
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = GameManager.instance.playerSpeed;
         rb = GameManager.instance.rb;
         joystick = GameManager.instance.joystick;
+        mainPlayer = gameObject.GetComponent<MainPlayer>();
     }
 
     private void FixedUpdate()
@@ -31,11 +33,13 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 moveVector = new Vector3(movement.x, 0f, movement.z) * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(transform.position + moveVector);
-
+            mainPlayer.playerCurrentState = Player.PlayerState.Walk;
             if (playerMeshObject != null)
             {
                 playerMeshObject.transform.forward = moveVector.normalized;
             }
         }
+        else
+            mainPlayer.playerCurrentState = Player.PlayerState.Idle;
     }
 }

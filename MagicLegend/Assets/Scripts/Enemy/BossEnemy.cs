@@ -8,7 +8,7 @@ public class BossEnemy : MainEnemy
     private void Start()
     {
         damageValue = 1;
-        attackTime = 2f; 
+        attackTime = 2f;
         linearHP = 15f;
         exponentialHP = 0.025f;
         health = CalculateHP(PlayerPrefs.GetInt("Level"), 100, linearHP, exponentialHP);
@@ -36,7 +36,7 @@ public class BossEnemy : MainEnemy
         if (distance > follow_distance)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerFollowObject.position.x, transform.position.y, playerFollowObject.position.z), moveSpeed * Time.deltaTime);
-            transform.LookAt(new Vector3(playerFollowObject.position.x,transform.position.y, playerFollowObject.position.z));
+            transform.LookAt(new Vector3(playerFollowObject.position.x, transform.position.y, playerFollowObject.position.z));
         }
         // Change To Idle State code Write Here
         //else if
@@ -73,14 +73,18 @@ public class BossEnemy : MainEnemy
             }
         }
     }
-   
+
     public override void Die()
     {
-        print("I am dying");
-        enemyAnimator.animator.Play(enemyAnimator.deathAnimation);
-        //Enemy Die Animation After Die Animation Destroy the Object    
-        gameObject.transform.GetChild(0).GetComponent<Collider>().enabled = false;
-        GameManager.instance.WinGame();
+        if (GameManager.instance.isGameOver)
+        {
+            print("I am dying");
+            enemyAnimator.animator.Play(enemyAnimator.deathAnimation);
+            //Enemy Die Animation After Die Animation Destroy the Object    
+            gameObject.transform.GetChild(0).GetComponent<Collider>().enabled = false;
+            GameManager.instance.WinGame();
+        }
+
 
     }
 }

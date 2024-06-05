@@ -12,6 +12,14 @@ public abstract class Player : MonoBehaviour
     [SerializeField]
     public float damageMultiplier;
 
+    public enum PlayerState
+    {
+        Idle,
+        Walk,
+        Die
+    }
+    public PlayerState playerCurrentState = PlayerState.Idle;
+
     public void TakeDamage(int damageValue)
     {
         GameManager.instance.HearthDecrease(damageValue);
@@ -22,6 +30,7 @@ public abstract class Player : MonoBehaviour
     public void Die()
     {
         print("I'm Dead Bruah");
+        playerCurrentState = PlayerState.Die;
         GameManager.instance.GameOver();
     }
 
@@ -29,4 +38,6 @@ public abstract class Player : MonoBehaviour
     {
         //This is a ADS part
     }
+
+
 }

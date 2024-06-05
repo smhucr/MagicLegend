@@ -1176,7 +1176,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5557388678242075569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1215,9 +1215,13 @@ MonoBehaviour:
   beamEndPoint: {fileID: 0}
   selectedElement: 0
   shootButton: {fileID: 0}
+  isShootable: 1
   blastButton: {fileID: 0}
+  isBlastable: 1
   rainButton: {fileID: 0}
+  isRainable: 1
   beamButton: {fileID: 0}
+  isBeamable: 1
   beamStart: {fileID: 0}
   beam: {fileID: 0}
   beamEnd: {fileID: 0}

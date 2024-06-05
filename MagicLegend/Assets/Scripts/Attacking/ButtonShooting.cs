@@ -90,6 +90,7 @@ public class ButtonShooting : MonoBehaviour
             {
                 if (isBeaming)
                 {
+                    gameManager.mainPlayer.GetComponent<MainPlayer>().playerCurrentState = Player.PlayerState.Idle;
                     MainEnemy mainEnemy = gameManager.closestEnemy.GetComponent<MainEnemy>();
                     if (mainEnemy.enemyCurrentState != MainEnemy.EnemyState.Attack && mainEnemy.enemyCurrentState != MainEnemy.EnemyState.Die)
                         mainEnemy.enemyCurrentState = MainEnemy.EnemyState.Chase;
@@ -101,6 +102,7 @@ public class ButtonShooting : MonoBehaviour
             {
                 if (isBeaming)
                 {
+                    gameManager.mainPlayer.GetComponent<MainPlayer>().playerCurrentState = Player.PlayerState.Idle;
                     if (gameManager.closestEnemy.transform.GetChild(0).GetComponent<Dummy>() != null)
                         gameManager.closestEnemy.transform.GetChild(0).GetComponent<Dummy>().TakingDamage();
                     beamTimer = 1;

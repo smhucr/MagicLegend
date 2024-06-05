@@ -253,6 +253,7 @@ public class GameManager : MonoBehaviour
     {
         startGame = true;
         scrollHand.SetActive(false);
+        mainPlayer.GetComponent<MainPlayer>().playerCurrentState = Player.PlayerState.Walk;
     }
 
     public void WinGame()
@@ -271,6 +272,7 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         startGame = false;
         gameOverPanel.SetActive(true);
+        isMoveable = false;
     }
 
 
