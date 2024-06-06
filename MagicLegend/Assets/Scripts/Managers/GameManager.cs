@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject marketOverview;
     public GameObject gameOverPanel;
     public GameObject winGamePanel;
+    public GameObject rewardCanvas;
     [Header("Money")]
     public int currentMoney;
     public int upgradeKitCount;
@@ -260,6 +261,7 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         startGame = false;
+        isMoveable = false;
         winGamePanel.SetActive(true);
         if (currentSceneState == SceneState.RunPart || currentSceneState == SceneState.BossPart)
             PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);

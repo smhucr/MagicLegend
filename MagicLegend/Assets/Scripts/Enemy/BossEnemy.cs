@@ -76,7 +76,7 @@ public class BossEnemy : MainEnemy
 
     public override void Die()
     {
-        if (GameManager.instance.isGameOver)
+        if (!GameManager.instance.isGameOver)
         {
             print("I am dying");
             enemyAnimator.animator.Play(enemyAnimator.deathAnimation);

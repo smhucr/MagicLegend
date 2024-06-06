@@ -5,12 +5,15 @@ using UnityEngine;
 public class RewardController : MonoBehaviour
 {
     private GameObject rewardOverview;
+    private GameObject rewardCanvas;
     public GameObject skillBar;
 
     public void Start()
     {
         rewardOverview = GameManager.instance.rewardManager.dailyRewardsPanel;
+        rewardCanvas = GameManager.instance.rewardCanvas;
         rewardOverview.SetActive(false);
+        rewardCanvas.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,6 +21,7 @@ public class RewardController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             rewardOverview.SetActive(true);
+            rewardCanvas.SetActive(true);
             skillBar.SetActive(false);
         }
     }
@@ -27,6 +31,7 @@ public class RewardController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             rewardOverview.SetActive(false);
+            rewardCanvas.SetActive(true);
             skillBar.SetActive(true);
         }
     }

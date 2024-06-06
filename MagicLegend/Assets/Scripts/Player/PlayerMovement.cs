@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private MainPlayer mainPlayer;
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float raycastDistance = 1f; // Raycast mesafesi
 
     private void Start()
     {
@@ -22,24 +21,33 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (GameManager.instance.isMoveable)
+        {
             MovePlayer();
+        }
     }
 
     private void MovePlayer()
     {
         Vector3 movement = new Vector3(joystick.Horizontal, 0f, joystick.Vertical).normalized;
+        Vector3 moveVector = movement * moveSpeed * Time.fixedDeltaTime;
 
         if (movement != Vector3.zero)
         {
-            Vector3 moveVector = new Vector3(movement.x, 0f, movement.z) * moveSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(transform.position + moveVector);
-            mainPlayer.playerCurrentState = Player.PlayerState.Walk;
-            if (playerMeshObject != null)
+            // Hareket yönünde Raycast yaparak çarpýþmayý kontrol et (isTrigger olanlarý yok sayarak)
+            if (!Physics.Raycast(transform.position, movement, raycastDistance, ~0, QueryTriggerInteraction.Ignore))
             {
-                playerMeshObject.transform.forward = moveVector.normalized;
+                rb.MovePosition(transform.position + moveVector);
+                mainPlayer.playerCurrentState = Player.PlayerState.Walk;
+
+                if (playerMeshObject != null)
+                {
+                    playerMeshObject.transform.forward = movement; // moveVector.normalized yerine movement kullanýldý
+                }
             }
         }
         else
+        {
             mainPlayer.playerCurrentState = Player.PlayerState.Idle;
+        }
     }
 }

@@ -3114,6 +3114,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1073103030006297083, guid: 9299dcea0f248214c95adef7e6c58094,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.0799332
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073103030006297083, guid: 9299dcea0f248214c95adef7e6c58094,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.00000047683605
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073103030006297083, guid: 9299dcea0f248214c95adef7e6c58094,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 3.9600334
+      objectReference: {fileID: 0}
     - target: {fileID: 1274995918665434484, guid: 9299dcea0f248214c95adef7e6c58094,
         type: 3}
       propertyPath: m_Layer
@@ -3702,6 +3717,7 @@ MonoBehaviour:
   marketOverview: {fileID: 0}
   gameOverPanel: {fileID: 116948710}
   winGamePanel: {fileID: 1458829828}
+  rewardCanvas: {fileID: 0}
   currentMoney: 0
   upgradeKitCount: 0
   currentMoneyText: {fileID: 975998410}

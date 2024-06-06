@@ -17,6 +17,7 @@ public class ObstacleTrigger : MonoBehaviour
         if (other.CompareTag("Wall"))
         {
             print("Collision with Wall");
+            gameManager.HearthDecrease(3);
             gameManager.GameOver();
         }
         else if (other.CompareTag("SpinnedSpike"))

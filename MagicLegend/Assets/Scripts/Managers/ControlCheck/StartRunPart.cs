@@ -19,6 +19,7 @@ public class StartRunPart : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             StartCoroutine(GameManager.instance.DisableMoveable(0.2f));
+            GameManager.instance.isGameOver = true;
             mainVirtualCamera.SetActive(false);
             TransitionManager.Instance().Transition("RunPart", transitions[0], 1.1f);
         }

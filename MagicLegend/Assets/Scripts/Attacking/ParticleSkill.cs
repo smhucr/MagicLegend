@@ -16,7 +16,8 @@ public class ParticleSkill : MonoBehaviour
             print("taking damage");
             int damage = 1 + (int)(GameManager.instance.currentElementLevel / 6); //Default 150 damage total veriyor
             mainEnemy.TakeDamage(damage);
-            mainEnemy.enemyCurrentState = MainEnemy.EnemyState.Chase;
+            if (mainEnemy.enemyCurrentState != MainEnemy.EnemyState.Attack && mainEnemy.enemyCurrentState != MainEnemy.EnemyState.Die)
+                mainEnemy.enemyCurrentState = MainEnemy.EnemyState.Chase;
 
         }
     }
