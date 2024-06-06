@@ -95,6 +95,8 @@ public class GameManager : MonoBehaviour
         upgradeKitCount = PlayerPrefs.GetInt("UpgradeKitCount");
         upgradeKitCountText.text = "Upgrade Kit: " + upgradeKitCount.ToString();
 
+       
+
         //Assign Element Levels
         selectedElement = PlayerPrefs.GetInt("SelectedElement");
 
@@ -193,6 +195,15 @@ public class GameManager : MonoBehaviour
         StartCoroutine(TransitionChecker());
 
         print("ElementLevelCost" + selectedElement);
+        
+        if(currentSceneState == SceneState.BossPart)
+        {
+
+            mainPlayer.GetComponent<MainPlayer>().health = PlayerPrefs.GetInt("ToBossHealth");
+            playerHealth = mainPlayer.GetComponent<MainPlayer>().health;
+            healthManager.InstantiateHearths();
+
+        }
 
     }
 
@@ -420,6 +431,7 @@ public class GameManager : MonoBehaviour
     {
         var mergedAura = objectPool.GetPooledObject(4);
         mergedAura.transform.parent = playerParent.transform;
+        mergedAura.transform.localPosition = Vector3.zero;
         mergedAura.SetActive(true);
         currentMergedAura = mergedAura;
     }

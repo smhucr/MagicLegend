@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainPlayer : Player
 {
     private GameManager gameManager;
-    private void Start()
+    private void Awake()
     {
         gameManager = GameManager.instance;
 

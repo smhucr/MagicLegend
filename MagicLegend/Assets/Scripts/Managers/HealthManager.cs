@@ -27,6 +27,7 @@ public class HealthManager : MonoBehaviour
 
     public void InstantiateHearths()
     {
+
         health = mainPlayer.health;
         for (int i = 0; i < hearths.Length; i++)
         {

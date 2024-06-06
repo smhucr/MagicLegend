@@ -39,6 +39,7 @@ public class ObstacleTrigger : MonoBehaviour
             print("Collision with Teleport");
             gameManager.StartBossPart();
             gameManager.isGameOver = true;
+            PlayerPrefs.SetInt("ToBossHealth", gameManager.playerHealth);
             gameManager.DisableMoveable(0.2f);
             
         }

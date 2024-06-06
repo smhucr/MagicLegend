@@ -295,6 +295,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1388231658}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &125183066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 527074504192917191, guid: bc2327abaf29ad8449d52a8d791015e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1388231658}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125183055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffecd2b6736a9544bdfafcd4586f0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &264397942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,7 +1717,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   gameManager: {fileID: 0}
-  mainPlayer: {fileID: 0}
+  mainPlayer: {fileID: 125183066}
   emptyHearth: {fileID: 21300000, guid: faa0bd48131bdab4696e6f4fe6b8388e, type: 3}
   fullHearth: {fileID: 21300000, guid: 097388d1b4a440b48b9b4a7589906b1a, type: 3}
   hearths:
@@ -3575,7 +3587,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3430905251401552386}
-  m_LocalRotation: {x: 0.45922443, y: -0.00000025039296, z: 0.00000012944268, w: 0.8883203}
+  m_LocalRotation: {x: 0.45922443, y: -0.00000028096252, z: 0.00000014524586, w: 0.8883203}
   m_LocalPosition: {x: 0.00000389336, y: 14.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3847,7 +3859,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3362674204631495938}
-  m_LocalRotation: {x: 0.45922443, y: -0.00000025039296, z: 0.00000012944268, w: 0.8883203}
+  m_LocalRotation: {x: 0.45922443, y: -0.00000028096252, z: 0.00000014524586, w: 0.8883203}
   m_LocalPosition: {x: 0.00000389336, y: 14.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
