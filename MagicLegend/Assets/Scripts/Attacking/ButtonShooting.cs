@@ -37,7 +37,8 @@ public class ButtonShooting : MonoBehaviour
     private GameObject beamEnd;
     [SerializeField]
     private LineRenderer line;
-
+    //Offset
+    private Vector3 offsetHeight = new Vector3(0, 0.25f, 0);
 
     [Serializable]
     public struct Beam
@@ -140,13 +141,13 @@ public class ButtonShooting : MonoBehaviour
         if (gameManager.isAvailableShoot && gameManager.startGame)
         {
             var auraCast = objectPool.GetPooledObject(3);
-            auraCast.transform.position = player.transform.position;
+            auraCast.transform.position = player.transform.position+ offsetHeight;
             gameManager.currentMergedAura.SetActive(false);
             var blastSphere = objectPool.GetPooledObject(objectType);
             if (gameManager.closestEnemy != null)
-                blastSphere.transform.position = gameManager.closestEnemy.position;
+                blastSphere.transform.position = gameManager.closestEnemy.position + offsetHeight;
             else
-                blastSphere.transform.position = magicAreaPoint.position;
+                blastSphere.transform.position = magicAreaPoint.position + offsetHeight;
             gameManager.audioSource.PlayOneShot(gameManager.audioClips[0], 0.1f);
             StartCoroutine(Disableobj(blastSphere, 4f));
             StartCoroutine(Disableobj(auraCast, 1f));
@@ -161,13 +162,13 @@ public class ButtonShooting : MonoBehaviour
         if (gameManager.isAvailableShoot && gameManager.startGame)
         {
             var auraCast = objectPool.GetPooledObject(3);
-            auraCast.transform.position = player.transform.position;
+            auraCast.transform.position = player.transform.position + offsetHeight;
             gameManager.currentMergedAura.SetActive(false);
             var magicRain = objectPool.GetPooledObject(objectType);
             if (gameManager.closestEnemy != null)
-                magicRain.transform.position = gameManager.closestEnemy.position;
+                magicRain.transform.position = gameManager.closestEnemy.position+ offsetHeight;
             else
-                magicRain.transform.position = magicAreaPoint.position;
+                magicRain.transform.position = magicAreaPoint.position + offsetHeight;
             gameManager.audioSource.PlayOneShot(gameManager.audioClips[0], 0.1f);
             StartCoroutine(Disableobj(magicRain, 5f));
             StartCoroutine(Disableobj(auraCast, 1f));
@@ -251,7 +252,7 @@ public class ButtonShooting : MonoBehaviour
         {
             isRainable = true;
         }
-        else if(order ==3)
+        else if (order == 3)
         {
             isBeamable = true;
         }
